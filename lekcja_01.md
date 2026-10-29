@@ -1,428 +1,210 @@
-# Lekcja 1. Od czatu do agenta
+# Lekcja 1. Działający chatbot za hasłem
 
-**Dzisiaj budujesz własny czat AI i publikujesz go pod linkiem.**
+**Na koniec masz własny link. Otwierasz go, wpisujesz hasło i rozmawiasz z AI. Tyle na dziś.**
 
-Nie musisz pisać kodu ręcznie. Ty opisujesz zadanie, asystent pomaga je wykonać, a potem sprawdzasz efekt. **Jedno polecenie, jedna zmiana, jeden test.**
+Budujesz z Codex lub Claude Code. Ty określasz efekt i sprawdzasz, czy działa.
 
-## Co będzie na zajęciach
+## Przygotowanie
 
-| Etap | Co robimy | Po czym poznasz, że działa |
-|---|---|---|
-| Wprowadzenie | Pokaz gotowego agenta i omówienie jego decyzji | Rozróżniasz czat, ustalony proces i agenta |
-| 1. Środowisko | Otwieramy projekt, zmieniamy stronę i naprawiamy błąd | Widzisz własną stronę w przeglądarce |
-| 2. Czat | Podłączamy model przez OpenRouter i Vercel AI SDK | Wysyłasz wiadomość i dostajesz prawdziwą odpowiedź |
-| 3. Publikacja | Wysyłamy projekt na GitHub i Vercel | Czat działa po wyłączeniu lokalnego serwera |
+Potrzebujesz narzędzi z [instrukcji instalacji](INSTALACJA_I_KONTA.md), dostępu do jednego asystenta, kont GitHub i Vercel oraz klucza OpenRouter od LABA.
 
-Podział na małe kroki pomaga wrócić do miejsca, w którym utkniesz. Wykonuj je po kolei, w tempie wskazanym przez prowadzącego.
+Utwórz folder **moj-agent** i otwórz go w Codex lub Claude Code. To tutaj powstaje aplikacja. Folder pobranych materiałów trzymaj osobno.
 
-## Zanim zaczniesz
+Wykonuj poniższe kroki w jednej rozmowie z asystentem. Kolejny prompt wklej dopiero po sprawdzeniu poprzedniego kroku.
 
-- Wykonaj [instrukcję instalacji i zakładania kont](INSTALACJA_I_KONTA.md).
-- Przygotuj **Codex lub Claude Code** z działającym dostępem na swoim koncie.
-- Przygotuj konto GitHub i Vercel.
-- Klucz OpenRouter oraz nazwę dopuszczonego modelu dostaniesz od LABA/prowadzącego.
-- Utwórz osobny folder aplikacji, np. **moj-agent**.
+## 1. Uruchom stronę
 
-**Folder materiałów to instrukcja. Folder moj-agent to Twoja aplikacja.** Nie generuj aplikacji w katalogu pobranych materiałów.
-
-### Codex czy Claude Code?
-
-Prompty poniżej działają w obu narzędziach. Nie musisz wklejać innych instrukcji zależnie od asystenta.
-
-- W aplikacji z widokiem projektów wybierz **folder moj-agent** i pracę na lokalnych plikach.
-- Jeśli używasz terminala, najpierw przejdź do tego folderu, a potem uruchom `codex` albo `claude`. Po instalacji Codex przez npm w Windows PowerShell może być potrzebne `codex.cmd`.
-- Zostań w jednej rozmowie podczas tej lekcji. Nową rozmowę zacznij promptem „Powrót do pracy” z końca instrukcji.
-- Zgody na operacje czytaj przed zatwierdzeniem. Jeśli asystent wskazuje inny folder, zatrzymaj go i otwórz właściwy projekt.
-
-## Wprowadzenie. Co właściwie budujemy?
-
-Prowadzący pokaże agenta, który rzeczywiście korzysta z narzędzia. Zwróć uwagę:
-
-1. Co chce osiągnąć użytkownik?
-2. Czy system tylko odpowiada, czy wykonuje dodatkową czynność?
-3. Kto wybiera następny krok: człowiek, z góry zapisany proces czy model?
-4. Które działania wymagają zgody człowieka?
-
-Dzisiaj budujesz podstawę: **czat połączony z modelem AI**. Kolejne możliwości dołożymy na następnych spotkaniach. Sam wygląd okna rozmowy nie oznacza jeszcze, że mamy autonomicznego agenta.
-
----
-
-## Etap 1. Uruchom własną stronę
-
-### Krok 1A. Sprawdź miejsce pracy
-
-**Ty:** otwórz folder moj-agent w asystencie. Wklej ten prompt tylko raz, na początku pracy:
+**Wklej do asystenta:**
 
 ```text
-Pracujemy nad moim projektem na kursie LABA AI Agents. Jestem początkujący.
-Pisz po polsku i krótko wyjaśniaj nowe pojęcia.
+Budujemy mój pierwszy chatbot na kursie LABA. Jestem początkujący.
+Pisz po polsku i krótko. Wykonuj tylko aktualny krok, korzystając
+z narzędzi do plików i terminala. Jeśli coś muszę zrobić sam, podaj
+jedną konkretną czynność i poczekaj na wynik.
 
-Wykonuj tylko aktualnie zlecony krok. Przed zmianą opisz plan w maksymalnie
-3 punktach. Korzystaj z dostępnych narzędzi do pracy na plikach i uruchamiania
-komend. Gdy czegoś nie możesz wykonać, podaj mi dokładnie jedną następną
-czynność i poczekaj na wynik.
+Sprawdź bieżący folder oraz Node.js, npm i Git.
+W tym folderze przygotuj minimalny Next.js App Router z TypeScript.
+Jeśli projekt już istnieje, kontynuuj go zamiast tworzyć nowy.
+Nie nadpisuj moich plików. W PowerShell używaj npm.cmd i npx.cmd,
+jeśli uruchamianie plików .ps1 jest blokowane.
 
-Nie nadpisuj istniejącego projektu. Nie usuwaj plików poza zakresem zadania.
-Nie odczytuj ani nie wypisuj wartości z plików .env, kluczy i haseł.
-Nie zastępuj prawdziwego połączenia z modelem atrapą bez wyraźnego oznaczenia.
-
-Teraz tylko sprawdź: bieżący folder, czy istnieje package.json,
-wersję Node.js, npm i Git. W PowerShell używaj npm.cmd i npx.cmd,
-jeśli skrypty .ps1 są blokowane. Niczego jeszcze nie instaluj.
-Podaj, co jest gotowe, czego brakuje i zatrzymaj się.
+Na stronie pokaż „Mój chatbot”, puste miejsce na rozmowę,
+pole wiadomości i przycisk „Wyślij”. Na razie bez odpowiedzi AI.
+Zainstaluj potrzebne zależności, uruchom stronę i podaj dokładny adres.
+Zatrzymaj się po tym kroku.
 ```
 
-**Oczekiwany efekt:** asystent wskazuje właściwy folder oraz dostępne narzędzia. Brak package.json w pustym folderze jest normalny.
+**Ty:** otwórz adres wypisany w terminalu, np. localhost:3000. Jeśli podaje inny port, otwórz właśnie ten adres.
 
-**Nie idź dalej, jeśli:** jesteś w katalogu materiałów, folderze domowym albo innym projekcie. Popraw wybór folderu.
+**Sprawdź:** widzisz tytuł, pole wiadomości i przycisk. Na tym etapie czat jeszcze nie odpowiada.
 
-### Krok 1B. Zbuduj pustą aplikację
+Jeśli serwer musisz uruchomić sam, wpisz w terminalu w folderze aplikacji:
 
-**Ty:** po poprawnym sprawdzeniu środowiska wklej:
+- Windows PowerShell: `npm.cmd run dev`
+- macOS lub CMD: `npm run dev`
+
+Terminal z serwerem zostaw otwarty.
+
+## 2. Podłącz model
+
+**Wklej do asystenta:**
 
 ```text
-W tym folderze przygotuj minimalny projekt Next.js App Router z TypeScript.
-Jeżeli projekt już istnieje, uzupełnij go zamiast tworzyć kolejny.
+Dodaj prawdziwy czat do tej aplikacji przez Vercel AI SDK
+i @openrouter/ai-sdk-provider. Sprawdź zgodność wersji w oficjalnej
+dokumentacji i zachowaj lockfile.
 
-Użyj wersji zaleconych przez prowadzącego. Jeśli nie zostały podane,
-sprawdź oficjalną dokumentację i zgodność zależności, zanim je wybierzesz.
-Zapisz dokładne wersje i lockfile; nie aktualizuj ich samowolnie w kolejnych krokach.
+Użyj serwerowego /api/chat ze streamText i interfejsu zgodnego
+z wybraną wersją SDK. Odpowiedź ma docierać strumieniowo.
+Przekazuj historię bieżącej rozmowy, aby model znał poprzednie wiadomości.
+Dodaj stan oczekiwania, czytelny błąd i blokadę pustych wiadomości.
 
-Na stronie głównej wyświetl tytuł „Mój agent AI” i tekst „Pierwsza lekcja LABA”.
-Na tym etapie bez modelu, bazy danych i logowania użytkowników.
-Zainstaluj zależności i uruchom aplikację.
-Podaj dokładny adres z terminala oraz sposób zatrzymania serwera.
-Jeśli nie możesz utrzymać serwera uruchomionego, podaj komendę,
-którą mam wykonać w terminalu w folderze projektu. Zatrzymaj się po tym kroku.
+Konfigurację pobieraj ze zmiennych OPENROUTER_API_KEY i OPENROUTER_MODEL.
+Przygotuj .env.example z pustymi polami oraz .gitignore chroniący
+.env i .env.local. Nie odczytuj istniejących sekretów i nie proś
+o wklejanie klucza do rozmowy. Klucz ma pozostać wyłącznie na serwerze.
+
+Wyjaśnij, jak samodzielnie wpisać wartości w .env.local.
+Jeśli ich brakuje, pokaż czytelny komunikat zamiast udawanej odpowiedzi.
+Nie dodawaj bazy danych ani innych funkcji. Nie wykonuj sam płatnych
+wywołań — pierwszy test zrobię w przeglądarce.
 ```
 
-**Ty:** otwórz adres podany przez terminal. Może to być localhost:3000, ale jeśli terminal poda inny port, użyj właśnie tego adresu.
+**Ty:**
+
+1. W głównym folderze aplikacji, obok package.json, otwórz lub utwórz plik **.env.local**.
+2. Wpisz w nim lokalnie klucz od LABA i dokładny identyfikator modelu od prowadzącego:
+
+```dotenv
+OPENROUTER_API_KEY=tu_wpisz_klucz_od_LABA
+OPENROUTER_MODEL=tu_wpisz_id_modelu_od_prowadzacego
+```
+
+3. Zapisz plik. Sprawdź, czy nie nazywa się .env.local.txt.
+4. Zatrzymaj serwer przez Ctrl+C i uruchom go ponownie.
+
+Nie wklejaj wartości klucza do asystenta, grupy ani repozytorium.
+
+**Sprawdź w przeglądarce:**
+
+- Wyślij: „Mam na imię Alex”.
+- Następnie: „Jak mam na imię?”.
+
+**Gotowe, gdy:** model odpowiada i pamięta imię w tej rozmowie. Po odświeżeniu historia może zniknąć — zapis rozmów zrobimy później.
+
+## 3. Dodaj hasło
+
+Jedno wspólne hasło do Twojego chatbota. Po otwarciu linku najpierw pojawia się ekran z polem hasła.
+
+**Wklej do asystenta:**
+
+```text
+Zabezpiecz tego chatbota jednym hasłem warsztatowym.
+Przed czatem pokaż prosty ekran „Wpisz hasło” i przycisk „Wejdź”.
+Dodaj możliwość wyjścia, która usuwa sesję.
+
+Hasło sprawdzaj wyłącznie na serwerze ze zmiennej CHAT_PASSWORD.
+Po poprawnym haśle utwórz wygasającą sesję w podpisanym cookie:
+HttpOnly, SameSite oraz Secure w produkcji.
+Podpis opieraj na SESSION_SECRET. Nie wkładaj hasła do cookie.
+Sprawdzaj sesję także w /api/chat, zanim nastąpi wywołanie OpenRouter.
+Bez sesji endpoint ma zwracać 401 i nie wywoływać modelu.
+Brak konfiguracji ma blokować dostęp, a nie wyłączać ochronę.
+Ogranicz próby zgadywania hasła; nie traktuj licznika w pamięci
+procesu jako globalnej ochrony na hostingu.
+
+Dodaj puste CHAT_PASSWORD i SESSION_SECRET do .env.example.
+Wyjaśnij, jak ustawić je lokalnie. SESSION_SECRET wygeneruj lokalnie
+kryptograficznie i zapisz bez wypisywania jego wartości w rozmowie.
+Nie odczytuj istniejących sekretów.
+
+Bez kont użytkowników, rejestracji, OAuth i bazy danych.
+Sprawdź poprawne i błędne hasło, wyjście oraz odmowę /api/chat
+bez sesji. Te próby nie wymagają płatnego wywołania modelu.
+Podaj wykonane sprawdzenia i te, które mam wykonać ręcznie.
+```
+
+**Ty:** ustaw **CHAT_PASSWORD** lokalnie w .env.local. Użyj własnego, trudnego do zgadnięcia hasła, innego niż hasła do Twoich kont. Po zmianie konfiguracji uruchom ponownie serwer.
 
 **Sprawdź:**
 
-- [ ] Widzę stronę z tytułem „Mój agent AI”.
-- [ ] Wiem, w którym folderze jest projekt.
-- [ ] Wiem, gdzie działa serwer. Ctrl+C w jego terminalu go zatrzymuje.
+- [ ] W prywatnym oknie przeglądarki widzę ekran hasła.
+- [ ] Błędne hasło nie otwiera czatu.
+- [ ] Poprawne hasło otwiera czat i mogę wysłać wiadomość.
+- [ ] Po wyjściu znów muszę wpisać hasło.
+- [ ] Asystent potwierdził, że /api/chat bez sesji zwraca 401, bez połączenia z modelem.
 
-Jeśli sam uruchamiasz aplikację, w folderze z package.json wpisz:
+Samo schowanie czatu za formularzem nie wystarczy. Hasło ma chronić również wysyłanie wiadomości do modelu.
 
-| Windows PowerShell | macOS / CMD |
+## 4. Opublikuj i sprawdź link
+
+**Najpierw wklej do asystenta:**
+
+```text
+Przygotuj tę aplikację do publikacji na moim GitHub i Vercel.
+Sprawdź build oraz pliki do commita. .env.local i inne sekrety
+nie mogą trafić do repozytorium. Nie wypisuj ich wartości.
+Jeśli sekret jest już śledzony przez Git, zatrzymaj publikację.
+
+Pomóż mi zapisać projekt w moim własnym repozytorium, a następnie
+zaimportować je do Vercel. Nie wysyłaj kodu do repo materiałów kursowych.
+Jeśli muszę utworzyć repo lub zalogować się, poprowadź mnie
+jedną czynnością naraz. Nie proś o hasło do konta ani token na czacie.
+
+Podaj nazwy zmiennych do ustawienia na Vercel, bez ich wartości.
+Nie pomijaj sprawdzania hasła po wdrożeniu.
+Zostań przy obecnym zakresie: chatbot, hasło i działający link.
+```
+
+**Ty:**
+
+1. Na GitHub utwórz własne puste repo, np. **moj-chatbot-laba**. Może być prywatne.
+2. Podaj asystentowi adres tego repo — pomoże wysłać kod.
+3. Zaloguj się do Vercel i zaimportuj swoje repo jako nowy projekt.
+4. W **Environment Variables** ustaw cztery zmienne:
+
+| Nazwa | Co wpisujesz bezpośrednio w panelu Vercel |
 |---|---|
-| `npm.cmd run dev` | `npm run dev` |
+| OPENROUTER_API_KEY | Klucz od LABA |
+| OPENROUTER_MODEL | Identyfikator modelu od prowadzącego |
+| CHAT_PASSWORD | Hasło do Twojego chatbota |
+| SESSION_SECRET | Lokalnie wygenerowany sekret podpisu sesji |
 
-### Krok 1C. Zmień jedną rzecz i sprawdź efekt
+Wartości przenieś samodzielnie z lokalnego pliku do panelu. Nie przesyłaj zrzutów, na których są widoczne.
 
-```text
-Zmień tylko tekst pod tytułem na „Buduję swojego pierwszego agenta”.
-Nie przebudowuj strony i nie dodawaj funkcji.
-Po zmianie wskaż zmieniony plik i powiedz, jak sprawdzić efekt w przeglądarce.
-```
+5. Uruchom wdrożenie. Po zmianie zmiennych wykonaj nowe wdrożenie.
+6. Otwórz otrzymany link w prywatnym oknie przeglądarki.
+7. Sprawdź błędne hasło, poprawne hasło i jedną odpowiedź czatu.
+8. Wyłącz lokalny serwer. Link online nadal ma działać.
 
-**Ty:** wróć do strony. Jeśli trzeba, odśwież ją.
+**Efekt końcowy: link + działające hasło + prawdziwa odpowiedź AI.**
 
-**Gotowe, gdy:** nowy tekst rzeczywiście jest na stronie. Komunikat asystenta „zmienione” nie zastępuje sprawdzenia.
+## Gdy coś nie działa
 
-### Krok 1D. Zobacz błąd i napraw go
-
-To kontrolowana próba, wykonywana z prowadzącym.
-
-```text
-Przygotuj odwracalne ćwiczenie z błędem importu w tej aplikacji.
-Najpierw zapisz aktualny działający stan w lokalnym Git, jeśli jest dostępny;
-nie wysyłaj nic do internetu i nie dodawaj plików .env.
-
-Dodaj mały komponent z tekstem na stronie, sprawdź go, a następnie celowo
-zmień tylko ścieżkę jego importu na nieistniejącą.
-Pokaż mi, gdzie zobaczę błąd. Nie naprawiaj go jeszcze.
-Nie zmieniaj zależności ani konfiguracji.
-```
-
-**Ty:** zobacz komunikat w przeglądarce lub terminalu. Następnie wklej:
+Wklej do asystenta:
 
 ```text
-Wyjaśnij ten błąd jednym prostym zdaniem. Znajdź jego przyczynę i napraw
-wyłącznie błędny import. Sprawdź, czy strona znów działa.
-Nie ukrywaj komunikatu błędu i nie usuwaj komponentu jako „naprawy”.
+Jestem w kroku [NUMER].
+Używam [WINDOWS / MACOS] i [NAZWA TERMINALA].
+Robię [CZYNNOŚĆ LUB KOMENDA].
+Widzę [KOMUNIKAT BŁĘDU BEZ SEKRETÓW].
+
+Znajdź przyczynę i napraw najmniejszy potrzebny zakres.
+Nie przebudowuj aplikacji i nie dodawaj funkcji.
+Nie wyłączaj hasła, żeby obejść błąd.
+Jeżeli brakuje informacji, poproś o jedną konkretną rzecz.
+Po naprawie podaj sposób sprawdzenia efektu.
 ```
 
-**Gotowe, gdy:** potrafisz wskazać, co się zepsuło, i widzisz ponownie działającą stronę.
+PowerShell blokuje npm? Użyj `npm.cmd` zamiast `npm`. Strona nie odpowiada? Sprawdź, czy serwer działa i czy otwierasz port wypisany w terminalu.
 
----
+## Koniec
 
-## Etap 2. Podłącz prawdziwy model AI
+- [ ] Mam link do własnego chatbota.
+- [ ] Bez hasła nie można z niego korzystać.
+- [ ] Po wpisaniu hasła model odpowiada.
+- [ ] Klucz API i hasło nie znajdują się w repozytorium.
 
-### Krok 2A. Przygotuj konfigurację bez ujawniania klucza
+Na dziś wystarczy. [Praca domowa](PRACE_DOMOWE.md) pojawi się po zajęciach.
 
-```text
-Przygotuj konfigurację czatu: Vercel AI SDK i jawny provider
-@openrouter/ai-sdk-provider. Sprawdź w oficjalnej dokumentacji zgodność
-wersji oraz aktualny sposób obsługi streamingu, zanim napiszesz kod.
-Nie zastępuj AI SDK samym zapytaniem HTTP.
-
-Utwórz .env.example z pustymi polami:
-OPENROUTER_API_KEY=
-OPENROUTER_MODEL=
-
-Przygotuj .gitignore tak, aby lokalne pliki .env i .env.local nie trafiały
-do repozytorium, a .env.example mógł być zapisany bez sekretów.
-Jeżeli .env.local już istnieje, nie odczytuj go ani nie nadpisuj.
-Wyjaśnij mi, jak samodzielnie utworzyć lub otworzyć .env.local
-i wpisać klucz oraz identyfikator modelu. Nie proś o ich wklejenie do rozmowy.
-Nie wykonuj jeszcze płatnego wywołania modelu.
-```
-
-**Ty:**
-
-1. Utwórz lub otwórz plik **.env.local w głównym folderze aplikacji**, obok package.json.
-2. Wpisz lokalnie klucz od LABA i dokładny identyfikator modelu od prowadzącego.
-3. Zapisz plik. Uważaj, żeby nie miał nazwy .env.local.txt.
-4. Jeśli serwer już działał, zatrzymaj go i uruchom ponownie.
-
-Nie wysyłaj tego pliku na czat. Nie dodawaj prefiksu NEXT_PUBLIC_ do klucza — oznaczałby konfigurację udostępnianą stronie.
-
-**Jeśli nie masz jeszcze klucza:** przygotuj konfigurację i zgłoś brak prowadzącemu. Nie kupuj dostępu w ciemno i nie oznaczaj połączenia jako sprawdzonego.
-
-### Krok 2B. Zbuduj prosty czat
-
-```text
-W tym samym projekcie dodaj czat przez Vercel AI SDK i OpenRouter.
-
-Zakres:
-- serwerowy endpoint /api/chat korzystający ze streamText;
-- konfiguracja wyłącznie z OPENROUTER_API_KEY i OPENROUTER_MODEL;
-- jedno pole wiadomości, przycisk „Wyślij” i historia bieżącej rozmowy;
-- rzeczywista odpowiedź strumieniowa zgodna z wybraną wersją SDK;
-- czytelny stan oczekiwania i błąd, bez ujawniania sekretów;
-- blokada pustej wiadomości oraz powtórnego wysłania podczas oczekiwania;
-- serwerowa walidacja rozmiaru wejścia i ograniczenie długości odpowiedzi.
-
-Nie dodawaj jeszcze bazy danych, narzędzi, załączników ani pełnego systemu kont.
-Nie odczytuj pliku .env.local. W kodzie odwołuj się do zmiennych środowiskowych.
-Nie wykonuj testowych wywołań modelu samodzielnie. Przygotuj aplikację,
-uruchom dostępne kontrole bez API i podaj mi adres do ręcznego testu.
-Wskaż osobno testy wykonane oraz te, których jeszcze nie uruchomiono.
-```
-
-### Krok 2C. Sprawdź rozmowę
-
-**Ty:** na lokalnej stronie wyślij kolejno:
-
-1. „Mam na imię Alex. Odpowiedz jednym zdaniem.”
-2. „Jak mam na imię?”
-3. „Wymień trzy pomysły na zastosowanie asystenta AI w małej firmie.”
-
-**Oczekiwany efekt:**
-
-- Pierwsza wiadomość dostaje odpowiedź modelu.
-- W tej samej rozmowie model ma dostęp do poprzednich wiadomości.
-- Przy dłuższej odpowiedzi tekst dociera stopniowo. Szybka odpowiedź może pojawić się niemal od razu — sama obserwacja animacji nie dowodzi streamingu.
-
-Na razie historia może zniknąć po odświeżeniu. Trwałą pamięć zbudujemy później.
-
-Poproś asystenta o sprawdzenie techniczne:
-
-```text
-Sprawdź w kodzie i dostępnych lokalnych kontrolach, czy frontend odbiera
-strumień z endpointu, zamiast animować gotowy tekst.
-Nie wykonuj kolejnych płatnych wywołań modelu.
-Wskaż dowód, który mogę zobaczyć w narzędziach przeglądarki podczas
-mojego następnego ręcznego testu. Jeśli nie możesz potwierdzić streamingu,
-napisz to wprost i zaproponuj najmniejszą poprawkę.
-```
-
-### Krok 2D. Przygotuj czat do publikacji
-
-Publiczny link do strony nie może oznaczać nieograniczonego korzystania z klucza LABA.
-
-```text
-Przygotuj prostą kontrolę dostępu do szkoleniowego czatu przed publikacją.
-Nie buduj jeszcze kont użytkowników ani integracji OAuth.
-
-Zaproponuj najprostszy wariant działający na naszym hostingu:
-ochrona wdrożenia, jeśli jest dostępna, albo hasło warsztatowe sprawdzane
-na serwerze z wygasającą, podpisaną sesją w cookie HttpOnly.
-Dla wariantu aplikacyjnego przygotuj potrzebne nazwy zmiennych w .env.example.
-Ich wartości wprowadzę lokalnie i na hostingu, nie w tej rozmowie.
-
-Zabezpiecz sam endpoint /api/chat, nie tylko widok strony.
-Bez poprawnego dostępu odrzuć żądanie przed wywołaniem OpenRouter.
-Dodaj ograniczenia zapytań i kosztów odpowiednie dla wybranego wdrożenia.
-Jawnie wskaż ograniczenia rozwiązania: licznik tylko w pamięci procesu
-nie jest globalnym limitem dla wielu instancji na Vercel.
-Nie deklaruj pełnego limitu kosztów bez działającego mechanizmu.
-
-Sprawdź odmowę dostępu bez wykonywania płatnego wywołania.
-Nie wyłączaj ochrony, aby przejść test. Podaj, co mam sprawdzić ręcznie.
-```
-
-**Ty:** wykonaj wskazane ustawienia z prowadzącym. Jeśli brakuje działającej ochrony, dokończ lokalną próbę i wróć do publikacji po jej skonfigurowaniu.
-
-**Sprawdź etap 2:**
-
-- [ ] Czat naprawdę odpowiada.
-- [ ] Model korzysta z wiadomości bieżącej sesji.
-- [ ] Pusta wiadomość nie jest wysyłana.
-- [ ] Problemy są pokazywane czytelnym komunikatem.
-- [ ] Klucz pozostaje na serwerze.
-- [ ] Brak dostępu blokuje wywołanie modelu.
-
----
-
-## Etap 3. Opublikuj aplikację
-
-### Krok 3A. Przygotuj wersję do zapisania
-
-```text
-Przygotuj projekt do pierwszej publikacji. Nie wysyłaj go jeszcze do internetu.
-
-Sprawdź build i dostępne kontrole projektu.
-Sprawdź listę plików śledzonych oraz przygotowanych do commita.
-Zweryfikuj, że pliki .env są ignorowane, a .env.example zawiera tylko puste pola.
-Nie wypisuj wartości sekretów ani zawartości lokalnej konfiguracji.
-Jeżeli sekret jest już śledzony przez Git, zatrzymaj publikację i opisz problem.
-
-Przygotuj lokalny commit tylko z plikami projektu.
-Nie zmieniaj historii i nie używaj force push.
-Podaj wynik builda, listę istotnych zmian i to, co nadal wymaga ręcznej próby.
-```
-
-**Gotowe, gdy:** build przechodzi, a w plikach do wysłania nie ma sekretów. Jeżeli budowanie wymaga konfiguracji, asystent ma wskazać nazwę brakującej zmiennej, a nie prosić o jej wartość na czacie.
-
-### Krok 3B. Zapisz kod na swoim GitHub
-
-**Ty:**
-
-1. Zaloguj się do GitHub.
-2. Wybierz **New repository**.
-3. Nazwij repo np. **moj-agent-laba**.
-4. Dla swojej aplikacji możesz wybrać **Private**.
-5. Utwórz puste repo: bez dodatkowego README, licencji i .gitignore, jeśli masz już te pliki lokalnie.
-6. Skopiuj adres repozytorium. Adres repo to nie sekret.
-
-Wklej do asystenta, uzupełniając adres:
-
-```text
-Moje repozytorium aplikacji: [WKLEJ ADRES SWOJEGO REPO].
-
-Sprawdź aktualny remote i gałąź. Połącz ten lokalny projekt z podanym repo
-i wyślij przygotowany commit. Nie wysyłaj nic do repo materiałów kursowych.
-Nie nadpisuj istniejącego remote bez wyjaśnienia i nie używaj force push.
-
-Jeśli potrzebne jest logowanie, poprowadź mnie przez standardowy proces
-w przeglądarce lub narzędziu. Nie proś o hasło ani token w tej rozmowie.
-Na końcu podaj link do zapisanej wersji i sposób sprawdzenia plików na GitHub.
-```
-
-**Ty:** otwórz swoje repo w przeglądarce. Sprawdź obecność kodu i brak plików .env.
-
-### Krok 3C. Wdróż na Vercel
-
-**Ty:**
-
-1. Zaloguj się do Vercel kontem połączonym z GitHub.
-2. Wybierz utworzenie nowego projektu i import swojego repo.
-3. Wybierz **folder aplikacji** jako katalog projektu. Jeśli package.json jest w głównym folderze repo, nie wskazuj innego katalogu.
-4. Zostaw wykryty framework Next.js, jeśli odpowiada projektowi.
-5. W sekcji **Environment Variables** dodaj OPENROUTER_API_KEY, OPENROUTER_MODEL i zmienne ochrony dostępu przygotowane w kroku 2D.
-6. Wartości wpisuj bezpośrednio w panelu. Nie wysyłaj zrzutu zawierającego klucze.
-7. Uruchom wdrożenie i poczekaj na jego wynik.
-8. Jeśli zmieniasz zmienne po wdrożeniu, uruchom nowe wdrożenie.
-
-Jeśli nie wiesz, co wpisać w ustawieniach:
-
-```text
-Pomóż mi skonfigurować import tego projektu na Vercel.
-Na podstawie plików projektu podaj katalog aplikacji, komendę budowania
-i nazwy potrzebnych zmiennych. Nie odczytuj ich wartości.
-Wyjaśnij, które ustawienia mam uzupełnić w panelu.
-Nie zmieniaj projektu ani nie uruchamiaj dodatkowego płatnego planu.
-```
-
-### Krok 3D. Sprawdź link, nie tylko zielony build
-
-**Ty:**
-
-1. Otwórz adres wdrożenia w nowym prywatnym oknie przeglądarki.
-2. Sprawdź, czy bez dostępu czat jest zablokowany.
-3. Uzyskaj dostęp zgodnie z ustawioną ochroną.
-4. Wyślij jedną wiadomość i sprawdź odpowiedź.
-5. Wyłącz lokalny serwer, a potem ponów otwarcie strony online.
-6. Z prowadzącym sprawdź kontrolowany błąd, np. brak wymaganej konfiguracji w oddzielnym wdrożeniu testowym. Po teście przywróć ustawienia.
-
-**Gotowe, gdy:** aplikacja działa przez internet, a płatny endpoint ma działającą ochronę. Sam ekran „Deployment successful” potwierdza wdrożenie, nie połączenie z modelem.
-
----
-
-## Gdy utkniesz — prompty ratunkowe
-
-### „Nie wiem, co zrobić dalej”
-
-```text
-Jestem w kroku [NUMER]. Widzę [OPIS EKRANU].
-Podaj mi tylko jedną następną czynność. Napisz, gdzie mam ją wykonać:
-w asystencie, terminalu czy przeglądarce. Poczekaj na mój wynik.
-```
-
-### „Mam błąd”
-
-```text
-Krok: [NUMER]. System i terminal: [NP. WINDOWS, POWERSHELL].
-Uruchamiam: [KOMENDA].
-Wynik: [WKLEJ KOMUNIKAT BEZ SEKRETÓW].
-
-Najpierw ustal przyczynę na podstawie tego komunikatu i plików projektu.
-Jeśli brakuje danych, poproś o jedną konkretną informację.
-Napraw najmniejszy potrzebny zakres, bez przebudowy działających części.
-Podaj test, który pokaże, że problem został rozwiązany.
-```
-
-### „Asystent robi za dużo”
-
-```text
-Zatrzymaj rozszerzanie projektu. W tym kroku chcę tylko: [JEDEN REZULTAT].
-Podsumuj już wykonane zmiany i wykonaj wyłącznie to, czego brakuje
-do tego rezultatu. Nie usuwaj mojej pracy i nie cofaj zmian bez uzgodnienia.
-```
-
-### Powrót do pracy w nowej rozmowie
-
-```text
-Kontynuuję projekt LABA AI Agents. Jestem w kroku [NUMER] lekcji 1.
-Sprawdź package.json, strukturę projektu i stan Git, bez czytania plików .env.
-Nie twórz nowej aplikacji i nie aktualizuj zależności.
-Podsumuj obecny stan, a potem pomóż wykonać tylko ten krok:
-[WKLEJ INSTRUKCJĘ KROKU].
-```
-
-## Najczęstsze problemy
-
-| Widzisz | Co sprawdzić |
-|---|---|
-| npm.ps1 / running scripts is disabled | W PowerShell użyj npm.cmd zamiast npm i npx.cmd zamiast npx |
-| git -- version nie działa | Popraw na git --version, bez spacji po dwóch myślnikach |
-| Brak package.json | Czy terminal jest w folderze aplikacji, a projekt został utworzony? |
-| Strona nie odpowiada | Czy serwer działa i otwierasz dokładny port z terminala? |
-| Strona działa, czat nie odpowiada | Komunikat backendu, dostęp do modelu, zmienne i ponowne uruchomienie serwera |
-| Lokalnie działa, na Vercel nie | Zmienne na hostingu, nowe wdrożenie i logi błędu bez sekretów |
-| 401 / brak dostępu | Czy masz aktywny dostęp warsztatowy? Nie usuwaj zabezpieczenia |
-| Asystent mówi „gotowe”, ale nie sprawdził | Poproś o rozdzielenie wykonanych kontroli od testów nieuruchomionych |
-
-Nie wklejaj całych logów bez sprawdzenia, czy nie zawierają kluczy lub danych prywatnych.
-
-## Koniec lekcji — Twoja checklista
-
-- [ ] Potrafię otworzyć właściwy projekt i zlecić jedną zmianę.
-- [ ] Widziałem kontrolowany błąd i jego naprawę.
-- [ ] Mój czat odpowiada przez model z OpenRouter.
-- [ ] Mam sprawdzony streaming i historię bieżącej rozmowy.
-- [ ] Klucz nie trafił do repozytorium ani przeglądarki.
-- [ ] Kod jest zapisany na moim GitHub.
-- [ ] Aplikacja działa na Vercel po wyłączeniu lokalnego serwera.
-- [ ] Brak dostępu blokuje płatne wywołanie.
-- [ ] Znam link do aplikacji i ostatnią działającą wersję kodu.
-
-Niezrobiony test oznacz jako **niesprawdzony**, a napotkany błąd zapisz do dokończenia. Nie musisz zgadywać, że działa.
-
-Praca domowa pojawi się po zajęciach w [zasadach i zadaniach](PRACE_DOMOWE.md).
-
-[Plan kursu](README.md) · [Instalacja](INSTALACJA_I_KONTA.md) · [Jak pracujemy](START.md)
+[Plan kursu](README.md) · [Instalacja](INSTALACJA_I_KONTA.md)
