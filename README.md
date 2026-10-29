@@ -10,7 +10,7 @@ Zaczynamy od czatu. Kończysz z własną aplikacją, która pamięta rozmowy, ko
 
 1. **[Zainstaluj narzędzia i załóż konta](INSTALACJA_I_KONTA.md)** — instrukcja dla Windows i macOS.
 2. **[Sprawdź, jak pracujemy](START.md)** — materiały kursu i własna aplikacja to dwa osobne foldery.
-3. **[Otwórz lekcję 1](lekcja_01.md)** — pierwszy chatbot i publikacja w internecie.
+3. **[Otwórz lekcję 1](lekcja_01.md)** — działający chatbot pod linkiem, zabezpieczony hasłem.
 
 Wystarczy **Codex lub Claude Code**. Osobny edytor kodu nie jest potrzebny. Dostęp do modeli w budowanej aplikacji zapewnia LABA przez OpenRouter; dostęp do asystenta kodowania przygotuj osobno.
 
@@ -24,7 +24,7 @@ Na teraz przygotuj środowisko i otwórz lekcję 1.
 
 | Lekcja | Co zbudujesz | Materiały |
 |---|---|---|
-| 1 | Pierwszy czat AI pod własnym linkiem | [Otwórz lekcję](lekcja_01.md) |
+| 1 | Działający chatbot pod linkiem, zabezpieczony hasłem | [Otwórz lekcję](lekcja_01.md) |
 | 2 | Instrukcje, które nadają agentowi rolę i zasady | Przed lekcją |
 | 3 | Wyszukiwanie w internecie, grafiki i analiza zdjęć | Przed lekcją |
 | 4 | Agenta wykonującego zadanie w kilku krokach | Przed lekcją |
