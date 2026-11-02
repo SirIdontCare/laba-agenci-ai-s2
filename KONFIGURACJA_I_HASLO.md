@@ -7,7 +7,7 @@
 | Nazwa | Skąd ją bierzesz | Do czego służy |
 |---|---|---|
 | OPENROUTER_API_KEY | Prywatna wiadomość od LABA | Dostęp Twojego chatbota do modeli |
-| OPENROUTER_MODEL | Dokładny identyfikator od prowadzącego | Wybór modelu |
+| OPENROUTER_MODEL | Dokładny identyfikator od prowadzącego lub z [listy modeli](MODELE_DO_CWICZEN.md), dozwolony na kluczu LABA | Wybór modelu |
 | CHAT_PASSWORD | Ustalasz sam | Wejście do Twojego chatbota |
 | SESSION_SECRET | Generowany lokalnie przez asystenta/narzędzie | Podpis potwierdzenia dostępu |
 
@@ -68,6 +68,8 @@ SESSION_SECRET=SEKRET_WYGENEROWANY_LOKALNIE
 - Nie zostawiaj przykładowych opisów jako gotowych wartości.
 - Dla hasła ze spacjami lub znakiem # użyj zwykłych podwójnych cudzysłowów zgodnie z formatem .env, np. `CHAT_PASSWORD="przykladowy tekst"`. Ten przykład nie jest hasłem do wykorzystania.
 - Klucz API przepisz dokładnie, bez przypadkowej spacji lub końca wiersza.
+
+Nie wiesz, co wpisać jako OPENROUTER_MODEL? [Tutaj znajdziesz konkretne modele i gotową linijkę do pliku](MODELE_DO_CWICZEN.md#4-wybierz-jedną-linijkę-i-zapisz). Przy zmianie modelu zachowaj klucz, hasło i sekret sesji.
 
 Poproś asystenta o wygenerowanie SESSION_SECRET lokalnie i zapisanie bez wypisywania jego wartości na czacie. Przy istniejącym pliku nie powinien nadpisywać Twoich ustawień. Jego odmowa odczytania sekretu nie oznacza awarii.
 

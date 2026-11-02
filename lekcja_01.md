@@ -51,7 +51,7 @@ Terminal z serwerem zostaw otwarty.
 
 ## 2. Podłącz model
 
-**Pomoc do tego etapu:** [otwieranie .env.local i wpisywanie klucza](KONFIGURACJA_I_HASLO.md) · [brak konfiguracji](PROBLEMY.md#p12) · [błąd 401](PROBLEMY.md#p13) · [niedostępny model](PROBLEMY.md#p14).
+**Pomoc do tego etapu:** [otwieranie .env.local i wpisywanie klucza](KONFIGURACJA_I_HASLO.md) · [lista modeli i zmiana modelu](MODELE_DO_CWICZEN.md) · [brak konfiguracji](PROBLEMY.md#p12) · [błąd 401](PROBLEMY.md#p13) · [niedostępny model](PROBLEMY.md#p14).
 
 **Wklej do asystenta:**
 
@@ -88,6 +88,8 @@ OPENROUTER_MODEL=tu_wpisz_id_modelu_od_prowadzacego
 
 3. Zapisz plik. Sprawdź, czy nie nazywa się .env.local.txt.
 4. Zatrzymaj serwer przez Ctrl+C i uruchom go ponownie.
+
+Dokładne identyfikatory Luny, Gemini Flash, Terry i Sonneta oraz instrukcję ich zmiany znajdziesz w [poradniku modeli](MODELE_DO_CWICZEN.md). Wybieraj model dopuszczony na kluczu kursowym.
 
 Nie wklejaj wartości klucza do asystenta, grupy ani repozytorium.
 

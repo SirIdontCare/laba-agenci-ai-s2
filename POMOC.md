@@ -14,6 +14,7 @@ Cel pierwszej lekcji: **działający chatbot pod własnym linkiem, dostępny po 
 | Nie rozumiem słowa z instrukcji | [Słowniczek](SLOWNICZEK.md) |
 | Mam już narzędzia i chcę zbudować czat | [Lekcja 1 — cztery kroki](lekcja_01.md) |
 | Nie wiem, jak wpisać klucz lub hasło | [Konfiguracja i hasło](KONFIGURACJA_I_HASLO.md) |
+| Chcę wybrać lub zmienić model chatbota | [Modele, koszty i zmiana w .env.local / Vercel](MODELE_DO_CWICZEN.md) |
 | Chcę zapisać kod albo wysłać go na GitHub | [Git krok po kroku](GIT_KROK_PO_KROKU.md) |
 | Chcę uruchomić aplikację w internecie | [GitHub i Vercel](GITHUB_I_VERCEL.md) |
 | Widzę błąd | [Znajdź swój komunikat](PROBLEMY.md) |

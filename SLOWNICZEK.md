@@ -43,6 +43,7 @@ Nie musisz zapamiętywać wszystkiego. Wróć tutaj, kiedy trafisz na nowe słow
 | Prompt | Instrukcja przekazana AI | „Dodaj ekran hasła” |
 | Asystent kodowania | AI pomagające zmieniać pliki i uruchamiać narzędzia | Codex lub Claude Code |
 | Model | System generujący odpowiedź | Model wskazany przez prowadzącego |
+| Identyfikator modelu / model ID / slug | Dokładna nazwa używana przez API; może różnić się od nazwy wyświetlanej w aplikacji | openai/gpt-6-luna; [lista i konfiguracja](MODELE_DO_CWICZEN.md) |
 | Chatbot | Aplikacja do rozmowy z modelem | Nasz efekt lekcji 1 |
 | Agent | System, który może dobierać kroki i używać narzędzi do zadania | Rozwijamy go w dalszej części kursu |
 | API | Sposób, w jaki programy wysyłają sobie żądania | Nasz serwer prosi OpenRouter o odpowiedź |

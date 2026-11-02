@@ -81,6 +81,8 @@ Podłączasz model AI kluczem otrzymanym od LABA. Asystent przygotowuje aplikacj
 
 Nie wiesz, gdzie wpisać klucz? [Tutaj pokazujemy plik, miejsce i format](KONFIGURACJA_I_HASLO.md).
 
+Chcesz wybrać model? [Luna, Gemini Flash, Terra i Sonnet — dokładne nazwy, koszty i zmiana w .env.local](MODELE_DO_CWICZEN.md). Na pierwszy test użyj modelu wskazanego przez prowadzącego; porównania są opcjonalne.
+
 **Ten krok masz za sobą, gdy:** wysyłasz „Mam na imię Alex”, a po pytaniu „Jak mam na imię?” chatbot odpowiada na podstawie tej rozmowy.
 
 Dostęp do modelu w chatbocie zapewnia LABA przez OpenRouter. To oddzielny dostęp od konta Codex / Claude Code. Klucza nie wklejasz do rozmowy z asystentem.
