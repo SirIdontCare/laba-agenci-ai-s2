@@ -2,6 +2,8 @@
 
 **Tutaj uczysz się obsługi miejsca pracy. Komendy nie wymagają wcześniejszej znajomości programowania.**
 
+Etap 1 z README: wykonaj punkty 1–2. Etap 2: punkt 3. Pozostałe punkty to pomoc, do której możesz wracać. To nie są nowe etapy kursu.
+
 ## 1. Otwórz terminal
 
 ### Windows
@@ -39,6 +41,8 @@ Wynikiem jest ścieżka — adres folderu na Twoim komputerze. To nie adres stro
 
 **Przykład wyniku, nie komenda:** `C:\Users\Ala\projekty\moj-agent` lub `/Users/ala/projekty/moj-agent`.
 
+**Widzisz ścieżkę? [Etap 1 gotowy → etap 2: zainstaluj narzędzia](README.md#krok-2).** Nie musisz czytać dalej przed instalacją.
+
 ## 3. Utwórz folder aplikacji
 
 Najprościej zrób to w Eksploratorze plików Windows albo Finderze macOS:
@@ -73,6 +77,8 @@ pwd
 `cd` oznacza „przejdź do folderu”. `mkdir` oznacza „utwórz folder”. Te polecenia nie tworzą jeszcze aplikacji.
 
 **Gotowe, gdy:** wyświetlona ścieżka kończy się na `projekty/moj-agent` lub `projekty\moj-agent`.
+
+**[Narzędzia i folder gotowe → etap 3: uruchom asystenta](README.md#krok-3)** · [Wróć do etapu 2](README.md#krok-2)
 
 ## 4. Wejdź do istniejącego folderu
 
@@ -133,6 +139,10 @@ Folder repo materiałów ma instrukcje .md. Nie jest gotową aplikacją do uruch
 Instalację robisz po pierwszym pobraniu aplikacji lub zmianie zależności. Serwer uruchamiasz, gdy chcesz pracować ze stroną. Nie musisz instalować bibliotek przed każdym odświeżeniem.
 
 Po `run dev` terminal może nadal wypisywać informacje i nie wrócić do zwykłego wiersza. **To normalne: serwer działa.** Otwórz podany adres w przeglądarce. Do innych komend użyj drugiego okna terminala, w tym samym folderze.
+
+![Przykładowy terminal: serwer działa i podaje adres strony](assets/terminal-serwer.svg)
+
+**Po czym poznać, gdzie wpisujesz tekst?** Zwykły terminal pokazuje np. PS i ścieżkę folderu. Uruchomiony Codex / Claude Code pokazuje rozmowę z AI. Serwer pokazuje logi i adres localhost. Nie wpisuj nowych komend do działającego serwera ani do rozmowy AI. Drugie okno otwierasz tak samo jak pierwsze w punkcie 1; potem przechodzisz przez cd do moj-agent.
 
 ## 8. Adres localhost i port
 

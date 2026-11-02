@@ -1,6 +1,12 @@
 # Klucz, konfiguracja i hasło — gdzie to wpisać?
 
-**Ten etap robisz po utworzeniu aplikacji.** Najpierw asystent przygotowuje kod i szablon ustawień. Potem Ty wpisujesz prywatne wartości.
+**Ten poradnik otwierasz po utworzeniu aplikacji.** Wykonuj tylko część swojego etapu:
+
+- **Etap 5 — model:** otwórz plik według punktów 2–4, wpisz dwie zmienne w [części dla modelu](#env-model), zapisz i przetestuj odpowiedź. Nie szukaj jeszcze ekranu hasła.
+- **Etap 6 — hasło:** najpierw wykonaj prompt dodający ochronę w lekcji, potem uzupełnij [część dla hasła](#env-haslo) i sprawdź dostęp.
+- **Etap 7 — publikacja:** dopiero wtedy przepisz komplet czterech wartości do Vercel według punktu 7.
+
+Numery punktów w tym pliku pomagają znaleźć czynność; etapy 1–8 pochodzą z README.
 
 ## 1. Cztery różne wartości
 
@@ -8,8 +14,8 @@
 |---|---|---|
 | OPENROUTER_API_KEY | Prywatna wiadomość od LABA | Dostęp Twojego chatbota do modeli |
 | OPENROUTER_MODEL | Dokładny identyfikator od prowadzącego lub z [listy modeli](MODELE_DO_CWICZEN.md), dozwolony na kluczu LABA | Wybór modelu |
-| CHAT_PASSWORD | Ustalasz sam | Wejście do Twojego chatbota |
-| SESSION_SECRET | Generowany lokalnie przez asystenta/narzędzie | Podpis potwierdzenia dostępu |
+| CHAT_PASSWORD | Ustalasz sam w etapie 6 | Wejście do Twojego chatbota |
+| SESSION_SECRET | Generowany lokalnie przez asystenta w etapie 6 | Podpis potwierdzenia dostępu |
 
 Hasło do chatbota nie jest hasłem do konta ChatGPT, Claude, GitHub ani Vercel. SESSION_SECRET to jeszcze inna wartość — nie wpisuje się jej w formularzu wejścia do czatu.
 
@@ -52,14 +58,36 @@ Nie używaj Worda ani formatowanego dokumentu do konfiguracji aplikacji.
 
 ## 5. Jak wygląda zapis?
 
-Szablon poniżej zawiera opisy, nie działające dane. **Zastąp je u siebie**; nie uruchamiaj tych wierszy jako komend terminala.
+<a id="env-model"></a>
+### Etap 5 — klucz i model
+
+W tym etapie potrzebujesz **dwóch wierszy**. Poniżej jest szablon z opisami — zastąp je swoimi wartościami. Nie wpisuj tych wierszy do terminala.
 
 ```dotenv
 OPENROUTER_API_KEY=WPISZ_TUTAJ_KLUCZ_OD_LABA
 OPENROUTER_MODEL=WPISZ_TUTAJ_DOKLADNE_ID_MODELU
-CHAT_PASSWORD=USTAW_WLASNE_HASLO_DO_CZATU
-SESSION_SECRET=SEKRET_WYGENEROWANY_LOKALNIE
 ```
+
+Klucz bierzesz z prywatnej wiadomości LABA, a pełne ID modelu od prowadzącego. Jeśli nie dostałeś ID lub potwierdzenia dostępności, zgłoś brak tych danych; nie wymieniaj w ciemno klucza ani subskrypcji.
+
+**Zapisz plik, uruchom ponownie serwer według punktu 6 i wyślij wiadomość.** Kiedy odpowiedź działa, [przejdź do etapu 6](README.md#krok-6).
+
+<a id="env-haslo"></a>
+### Etap 6 — hasło i sekret sesji
+
+Najpierw [zleć asystentowi dodanie ekranu i sprawdzania hasła](lekcja_01.md#3-dodaj-hasło). Dopiero potem wróć do tego pliku.
+
+Zachowaj dwa wiersze modelu. Dodaj lub uzupełnij hasło:
+
+```dotenv
+CHAT_PASSWORD=TU_WPISZ_SWOJE_HASLO
+```
+
+SESSION_SECRET ma wygenerować i zapisać lokalnie asystent zgodnie z promptem z lekcji. Nie wpisuj dosłownie tekstu „SEKRET_WYGENEROWANY_LOKALNIE”. Gdy asystent skończy, w pliku będą łącznie cztery nazwy: OPENROUTER_API_KEY, OPENROUTER_MODEL, CHAT_PASSWORD i SESSION_SECRET. Sprawdzasz je sam w pliku — nie wklejasz zawartości do rozmowy.
+
+Po restarcie wykonaj test hasła z punktu 8. **[Hasło działa → etap 7: publikacja](README.md#krok-7).**
+
+### Zasady zapisu dla obu etapów
 
 - Jedna zmienna w jednym wierszu.
 - Nazwa przed znakiem = musi zgadzać się z kodem.
@@ -71,7 +99,7 @@ SESSION_SECRET=SEKRET_WYGENEROWANY_LOKALNIE
 
 Nie wiesz, co wpisać jako OPENROUTER_MODEL? [Tutaj znajdziesz konkretne modele i gotową linijkę do pliku](MODELE_DO_CWICZEN.md#4-wybierz-jedną-linijkę-i-zapisz). Przy zmianie modelu zachowaj klucz, hasło i sekret sesji.
 
-Poproś asystenta o wygenerowanie SESSION_SECRET lokalnie i zapisanie bez wypisywania jego wartości na czacie. Przy istniejącym pliku nie powinien nadpisywać Twoich ustawień. Jego odmowa odczytania sekretu nie oznacza awarii.
+W etapie 6 poproś asystenta o wygenerowanie SESSION_SECRET lokalnie i zapisanie bez wypisywania jego wartości na czacie. Przy istniejącym pliku nie powinien nadpisywać Twoich ustawień. Jego odmowa odczytania sekretu nie oznacza awarii.
 
 ## 6. Zapisz, uruchom ponownie, sprawdź
 
@@ -80,8 +108,8 @@ Poproś asystenta o wygenerowanie SESSION_SECRET lokalnie i zapisanie bez wypisy
 3. Ctrl+C zatrzymuje serwer.
 4. Uruchom ponownie npm.cmd run dev na Windows PowerShell lub npm run dev na Macu.
 5. Otwórz lokalny adres.
-6. Wpisz hasło z CHAT_PASSWORD.
-7. Wyślij jedną wiadomość do chatbota.
+6. **Etap 5:** wyślij wiadomość; formularz hasła nie jest jeszcze potrzebny.
+7. **Etap 6:** w nowym prywatnym oknie sprawdź błędne i poprawne hasło oraz wiadomość do czatu.
 
 Jeśli lokalnie działa, a online nie, zobacz [P27](PROBLEMY.md#p27). Serwer internetowy ma własną konfigurację.
 
@@ -98,7 +126,11 @@ W Value nie dodawaj cudzysłowów tylko dlatego, że były składnią pliku .env
 
 Szczegóły: [Vercel krok po kroku](GITHUB_I_VERCEL.md).
 
+![Przykład osobnych pól nazwy i wartości zmiennej na Vercel](assets/vercel-zmienne.svg)
+
 ## 8. Test hasła
+
+**Ten test wykonujesz po etapie 6, kiedy ekran hasła już istnieje.** W etapie 5 brak tego ekranu jest prawidłowy.
 
 1. Otwórz **nowe prywatne okno** przeglądarki.
 2. Otwórz adres aplikacji.
@@ -122,5 +154,7 @@ Prywatne repo na GitHub chroni dostęp do kodu. Hasło w aplikacji chroni dostę
 Nie przesyłaj .env.local, wartości klucza, hasła ani SESSION_SECRET. Bezpiecznie można podać **nazwy zmiennych**, treść błędu po ukryciu sekretów i informację „zmienna ustawiona / brak”.
 
 Jeśli dane zostały opublikowane, otwórz [P23](PROBLEMY.md#p23).
+
+[Wróć do etapu 5](README.md#krok-5) · [Wróć do etapu 6](README.md#krok-6) · [Wróć do etapu 7](README.md#krok-7)
 
 [Pomoc](POMOC.md) · [Lekcja 1](lekcja_01.md)

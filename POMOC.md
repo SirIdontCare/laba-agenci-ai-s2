@@ -1,6 +1,6 @@
 # Pomoc od zera
 
-**Nie wiesz, gdzie kliknąć albo co wkleić? Zacznij tutaj.**
+**Tu znajdziesz pomoc do swojego etapu.** Jeśli dopiero zaczynasz kurs, otwórz [README i etap 1](README.md#krok-1). To jedna trasa przez cały proces.
 
 Cel pierwszej lekcji: **działający chatbot pod własnym linkiem, dostępny po wpisaniu hasła**. W tej pomocy przechodzimy przez każdy etap jego uruchomienia. Wracaj do niej wtedy, kiedy potrzebujesz.
 
@@ -12,7 +12,7 @@ Cel pierwszej lekcji: **działający chatbot pod własnym linkiem, dostępny po 
 | Pierwszy raz używam Codex lub Claude Code | [Asystent od instalacji do pierwszego pliku](ASYSTENT_OD_ZERA.md) |
 | Nie wiem, gdzie wpisywać komendy | [Terminal, foldery i pliki](TERMINAL_I_PLIKI.md) |
 | Nie rozumiem słowa z instrukcji | [Słowniczek](SLOWNICZEK.md) |
-| Mam już narzędzia i chcę zbudować czat | [Lekcja 1 — cztery kroki](lekcja_01.md) |
+| Mam już narzędzia i chcę zbudować czat | [Lekcja 1 — etapy 4–8](lekcja_01.md) |
 | Nie wiem, jak wpisać klucz lub hasło | [Konfiguracja i hasło](KONFIGURACJA_I_HASLO.md) |
 | Chcę wybrać lub zmienić model chatbota | [Modele, koszty i zmiana w .env.local / Vercel](MODELE_DO_CWICZEN.md) |
 | Chcę zapisać kod albo wysłać go na GitHub | [Git krok po kroku](GIT_KROK_PO_KROKU.md) |
@@ -37,7 +37,9 @@ Jeśli instrukcja mówi **„wklej do asystenta”**, wklej tekst do jego rozmow
 4. Jeżeli wynik się zgadza, przejdź dalej.
 5. Jeśli nie — otwórz wskazany problem. Nie zaczynaj od instalowania wszystkiego ponownie.
 
-Kolejność: **narzędzia → folder aplikacji → asystent → lokalna strona → model → hasło → GitHub → Vercel → test linku**.
+Kolejność etapów z README: **1 terminal → 2 narzędzia i folder → 3 asystent → 4 strona → 5 model → 6 hasło → 7 GitHub i Vercel → 8 test linku**.
+
+Punkty w instrukcjach pomocniczych oraz oznaczenia błędów P01–P32 nie zmieniają tej numeracji.
 
 <a id="zgloszenie"></a>
 ## Jak poprosić o pomoc
@@ -45,7 +47,8 @@ Kolejność: **narzędzia → folder aplikacji → asystent → lokalna strona �
 Skopiuj i uzupełnij:
 
 ```text
-Etap / numer kroku:
+Etap 1–8 z README:
+Nazwa czytanego pliku i punkt instrukcji:
 System: Windows / macOS
 Narzędzie: Codex / Claude Code / terminal / przeglądarka
 Co zrobiłem:

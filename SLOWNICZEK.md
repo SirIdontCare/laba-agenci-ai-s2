@@ -99,6 +99,7 @@ Nie musisz zapamiętywać wszystkiego. Wróć tutaj, kiedy trafisz na nowe słow
 |---|---|---|
 | Git | Program zapisujący historię zmian lokalnie | Działa także bez GitHub |
 | GitHub | Serwis przechowujący repozytoria online | Tu trafia kod aplikacji |
+| GitHub CLI / gh | Oficjalne narzędzie do obsługi GitHub w terminalu | gh auth login otwiera logowanie w przeglądarce |
 | Repozytorium / repo | Projekt wraz z historią Git | Twoje moj-chatbot-laba |
 | Commit | Zapis wybranych zmian w lokalnej historii | „Dodaj hasło do czatu” |
 | Staging / index | Lista zmian wybranych do następnego commita | Wypełniasz ją przez git add |

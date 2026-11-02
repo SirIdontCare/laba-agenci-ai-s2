@@ -4,6 +4,22 @@
 
 Jeśli ktoś mówi „otwórz projekt”, chodzi o wskazanie folderu na Twoim komputerze, w którym asystent może tworzyć pliki. Samo otwarcie zwykłego czatu w przeglądarce nie potwierdza takiego dostępu.
 
+**Czytasz pomoc do etapu 3 z README.** Numery poniżej oznaczają punkty tej instrukcji. Po teście wrócisz do etapu 4.
+
+### Którą ścieżkę wybrać?
+
+| Twoja sytuacja | Co zrób |
+|---|---|
+| Masz już asystenta, który tworzy pliki na Twoim komputerze | Wykonaj test z punktu 4 |
+| Masz konto ChatGPT i chcesz pracować w terminalu | Wybierz Codex — punkt 2 |
+| Masz dostęp do Claude Code w swoim planie | Wybierz Claude Desktop — punkt 3A |
+| Masz tylko darmowe konto ChatGPT / Go | Sprawdź wariant aplikacji komputerowej w punkcie 2A; dostęp zależy od konta i wdrożenia |
+| Nie wiesz, jaki masz dostęp | Wykonaj opisane niżej logowanie i sprawdź wynik; nie kupuj obu narzędzi |
+
+Osobiste plany Claude Pro, Max i Ultra obejmują Claude Code; konta firmowe mogą wymagać włączenia dostępu przez administratora. Codex jest dostępny w planach ChatGPT, z różnymi limitami i dostępnością klientów. Oficjalny cennik wymienia CLI w planie Plus; Free / Go mają ograniczony dostęp do aplikacji komputerowej zależny od wdrożenia. Jeśli masz tylko darmowe konto, sprawdź dostępny klient zamiast zakładać, że każda ścieżka zadziała.
+
+Aktualne zasady: [oficjalna dokumentacja OpenAI — plany i klienci](https://learn.chatgpt.com/docs/pricing), [Claude — dostęp do Code](https://support.claude.com/en/articles/14554922-claude-code-user-faq). Sprawdzono 02.11.2026.
+
 ## 1. Przygotuj miejsce
 
 1. Utwórz folder **projekty/moj-agent** zgodnie z [instrukcją folderów](TERMINAL_I_PLIKI.md).
@@ -16,7 +32,15 @@ Ta ścieżka daje jednoznaczną komendę do każdego kroku. Jeśli masz już dzi
 
 ### A. Konto
 
-Wejdź na [ChatGPT](https://chatgpt.com), zaloguj się na swoje konto albo utwórz je w formularzu. Potwierdź adres, jeśli serwis tego wymaga. Sprawdź dostęp do Codex na swoim planie. Sama instalacja nie przyznaje płatnego dostępu.
+Wejdź na [ChatGPT](https://chatgpt.com), zaloguj się na swoje konto albo utwórz je w formularzu. Potwierdź adres, jeśli serwis tego wymaga. Menu profilu → Settings / Ustawienia → sekcja konta lub planu pokaże nazwę posiadanego planu. W następnym punkcie zainstalujesz klienta, a po logowaniu sprawdzisz dostęp zadaniem tworzącym plik.
+
+**Wariant aplikacji komputerowej, jeśli z niego korzystasz:**
+
+1. Otwórz [oficjalną instrukcję aplikacji ChatGPT z przyciskiem pobrania](https://learn.chatgpt.com/docs/app), wybierz swój system i zainstaluj aplikację.
+2. Zaloguj się na to samo konto ChatGPT.
+3. Wybierz Codex i lokalną pracę z folderem. Otwórz **projekty → moj-agent**; samo wybranie zwykłego czatu nie wystarczy.
+4. Wykonaj test z punktu 4 tej instrukcji. Jeśli działa, pomiń instalację CLI poniżej.
+5. Jeśli klient pokazuje brak dostępu lub zakup, użyj opisu zgłoszenia niżej. Nie trzeba kupować API, żeby sprawdzić dostęp na koncie.
 
 **Ważne:** klucz OpenRouter od LABA jest dla chatbota. Nie wklejaj go do formularza logowania Codex.
 
@@ -62,6 +86,21 @@ Poczekaj na zakończenie. Następnie zamknij terminal i otwórz nowy. Sprawdź:
 5. Dokończ logowanie w otwartej przeglądarce.
 6. Wróć do terminala. Sprawdź, czy zamiast ekranu logowania widzisz rozmowę z asystentem.
 7. Jeśli pojawia się pytanie o folder lub zaufanie, przeczytaj ścieżkę. Ma to być Twój projekt.
+8. Jeśli narzędzie pyta o zgodę na zapis pliku w moj-agent, sprawdź opis i potwierdź tę czynność. Do testu wystarczy dostęp do tego folderu.
+
+![Schemat sprawdzania folderu i zgody na zapis](assets/folder-i-zgoda.svg)
+
+**Co może się pojawić po logowaniu:**
+
+| Widzisz | Zrób teraz |
+|---|---|
+| Pole rozmowy i nazwę folderu | Przejdź do testu z punktu 4 |
+| Stronę zgody w przeglądarce | Sprawdź konto, zatwierdź logowanie i wróć do terminala |
+| Propozycję zakupu / Upgrade | Zapisz nazwę planu i klienta; sprawdź tabelę dostępu na początku tej instrukcji |
+| Limit z godziną odnowienia | Zapisz termin odnowienia; instalacja ponownie nie odnawia limitu |
+| Odmowę w koncie firmowym | Poproś administratora o sprawdzenie dostępu do Codex |
+
+Jeżeli nadal nie możesz wykonać testu, zgłoś: „Etap 3, Codex CLI, system ..., plan ..., komunikat ...”. Bez hasła i danych logowania. [P05](PROBLEMY.md#p05) pomaga rozróżnić te sytuacje.
 
 W aktywnej rozmowie Codex wpisujesz polecenia dla AI. Aby wykonać systemową komendę npm samodzielnie, otwórz drugie okno terminala w folderze projektu.
 
@@ -72,10 +111,13 @@ W aktywnej rozmowie Codex wpisujesz polecenia dla AI. Aby wykonać systemową ko
 ### A. Konto i aplikacja
 
 1. Zaloguj się na [claude.ai](https://claude.ai) lub utwórz konto.
-2. Sprawdź, czy Twój plan albo organizacja zapewnia Claude Code.
+2. W menu konta otwórz Settings / Ustawienia → sekcję planu / Billing. Odczytaj nazwę planu. Dla konta firmowego sprawdź, czy jesteś we właściwej organizacji.
 3. Pobierz [oficjalną aplikację Claude Desktop](https://claude.com/download) dla systemu.
 4. Uruchom instalator, a po zakończeniu otwórz aplikację i zaloguj się.
-5. Otwórz zakładkę **Code**, rozpocznij lokalną pracę i wskaż folder **moj-agent**.
+5. Otwórz zakładkę **Code**. W nowej sesji pod polem wiadomości wybierz środowisko z grupy **Local**, potem kontrolkę folderu obok → **Open folder…**. Wskaż **projekty → moj-agent** i zatwierdź. W starszym widoku szukaj wyboru lokalnego folderu.
+6. Sprawdź nazwę folderu przed wpisaniem pierwszej wiadomości. Jeśli pojawi się potwierdzenie zaufania, upewnij się, że dotyczy moj-agent.
+
+Jeśli widzisz tylko zwykły czat, wróć do zakładki Code. Przy propozycji zakupu sprawdź plan z tabeli na początku; przy odmowie w organizacji zgłoś ją administratorowi. [Oficjalny przewodnik z widokami aplikacji](https://code.claude.com/docs/en/desktop-quickstart).
 
 **Gotowe, gdy:** możesz wykonać test z punktu 4. Brak zakładki lub dostępu: [P05](PROBLEMY.md#p05).
 
@@ -119,6 +161,8 @@ Jeśli to folder moj-agent, utwórz w nim plik gotowosc.txt z tekstem
 
 Jeśli powstał tylko blok tekstu w rozmowie, otwórz lokalny projekt w narzędziu: [P06](PROBLEMY.md#p06).
 
+**[Test działa → etap 4: budujesz pierwszą stronę](README.md#krok-4)** · [Wróć do etapu 3](README.md#krok-3)
+
 ## 5. Jak pracować dalej
 
 - Prompty z lekcji wklejaj do rozmowy z asystentem, po jednym.
@@ -140,7 +184,8 @@ Jeśli muszę coś zrobić sam, podaj jedną czynność i poczekaj.
 ```text
 Kontynuuję mój chatbot LABA. Nie twórz nowej aplikacji.
 Sprawdź strukturę projektu i package.json bez odczytywania plików .env.
-Powiedz, jak uruchomić obecną wersję. Jestem na kroku [NUMER] lekcji 1.
+Powiedz, jak uruchomić obecną wersję.
+Jestem w etapie [NUMER 1–8] z README, w pliku [NAZWA PLIKU].
 ```
 
 ## 6. Dwa różne logowania

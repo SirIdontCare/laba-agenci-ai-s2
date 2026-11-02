@@ -2,6 +2,8 @@
 
 Instrukcja dla Windows i macOS. **Osobny edytor kodu nie jest potrzebny.** Pracujemy z Codex albo Claude Code; wystarczy jeden asystent.
 
+**Ta instrukcja jest pomocą do głównej trasy w [README](README.md).** Etap 2: punkty 3–4 poniżej i folder aplikacji; etap 3: asystent; etap 7: GitHub i Vercel. Nie trzeba wykonywać wszystkich punktów naraz.
+
 **Pierwszy raz w terminalu?** [Zobacz, jak go otworzyć i jak wklejać komendy](TERMINAL_I_PLIKI.md).
 **Pierwsza instalacja Codex / Claude Code?** [Pełna ścieżka do pierwszego pliku](ASYSTENT_OD_ZERA.md).
 **Widzisz błąd?** [Znajdź swój problem](PROBLEMY.md).
@@ -77,6 +79,8 @@ npx.cmd --version
 
 Dopisanie `.cmd` wybiera inny plik uruchamiający to samo narzędzie. **Nie musisz zmieniać ExecutionPolicy ani uruchamiać terminala jako administrator.** Alternatywa: otwórz `cmd`, gdzie możesz używać `npm -v`. Na komputerze firmowym z dodatkowymi blokadami zgłoś problem administratorowi.
 
+**Node i npm pokazują wersje? Teraz wykonaj punkt 4 poniżej.**
+
 ## 4. Git
 
 ### Windows
@@ -101,6 +105,8 @@ Prawidłowy wynik wygląda np. `git version 2.56.0.windows.4`.
 3. Jeśli trzeba wywołać instalację ręcznie, wpisz `xcode-select --install`.
 4. Po zakończeniu ponów `git --version`. Pełny Xcode nie jest wymagany do tych ćwiczeń.
 
+**Na etapie 2 po sprawdzeniu Git utwórz [folder aplikacji](TERMINAL_I_PLIKI.md#3-utwórz-folder-aplikacji), a potem [przejdź do etapu 3](README.md#krok-3).** Zakładanie kont poniżej przyda się w etapie 7.
+
 Przy zapisywaniu i wysyłaniu aplikacji skorzystaj z [komend Git z objaśnieniami](GIT_KROK_PO_KROKU.md).
 
 ## 5. GitHub i Vercel
@@ -116,14 +122,7 @@ Przy zapisywaniu i wysyłaniu aplikacji skorzystaj z [komend Git z objaśnieniam
 5. Materiały kursu są publiczne: [laba-agenci-ai-s2](https://github.com/SirIdontCare/laba-agenci-ai-s2). Nie musisz prosić o dostęp.
 6. Własną aplikację zapisuj w **swoim** repozytorium. Nie nadpisuj materiałów kursowych.
 
-Przed pierwszym commitem ustaw autora. Zastąp przykładowe wartości swoimi danymi; możesz użyć adresu noreply widocznego w ustawieniach e-mail GitHub:
-
-```bash
-git config user.name "Twoje imię i nazwisko"
-git config user.email "twoj-adres@example.com"
-```
-
-Te komendy ustawiają dane autora commitów w obecnym repozytorium aplikacji. **Nie logują do GitHub.**
+**Na etapie zakładania konta nie wpisujesz jeszcze poleceń git config.** Autora commitów ustawisz w etapie 7, już w repozytorium aplikacji. Tam instrukcja Git najpierw sprawdza folder i tworzy historię przez git init, jeśli jej brakuje.
 
 ### Vercel
 
@@ -136,12 +135,12 @@ Te komendy ustawiają dane autora commitów w obecnym repozytorium aplikacji. **
 
 ## 6. Asystent kodowania — wybierz jedną ścieżkę
 
-Poniżej skrót instalacji. [Wersja od zera](ASYSTENT_OD_ZERA.md) wyjaśnia także logowanie, wybór folderu i test, czy asystent naprawdę tworzy pliki.
+**Jesteś w etapie 3 z README.** [Wersja od zera](ASYSTENT_OD_ZERA.md) wyjaśnia także logowanie, wybór folderu i test, czy asystent naprawdę tworzy pliki.
 
 ### A. Codex
 
 1. Utwórz konto OpenAI/ChatGPT albo zaloguj się na już posiadane.
-2. Sprawdź dostęp do Codex na swoim koncie. Aktualne metody logowania i ograniczenia pokazuje [oficjalna instrukcja Codex CLI](https://learn.chatgpt.com/docs/codex/cli).
+2. Wykonaj logowanie i test pliku według pełnej instrukcji asystenta; opisuje ona też plan konta, ekran zakupu i limit. Aktualne metody logowania i ograniczenia pokazuje [oficjalna instrukcja Codex CLI](https://learn.chatgpt.com/docs/codex/cli).
 3. Wariant terminalowy z npm, po instalacji Node.js:
 
 Windows PowerShell:
@@ -161,7 +160,7 @@ codex
 ```
 
 4. Wybierz logowanie przez ChatGPT i dokończ je w przeglądarce. Nie potrzebujesz własnego klucza OpenAI API, jeśli korzystasz ze ścieżki logowania ChatGPT z dostępnym Codex.
-5. Test: w pustym folderze testowym poproś o utworzenie pliku `test.txt` z tekstem „Gotowe do LABA”. Sprawdź, czy plik powstał.
+5. Test wykonaj w folderze **moj-agent**: poproś o utworzenie pliku **gotowosc.txt** z tekstem „Gotowe do LABA”. Sprawdź plik na dysku według pełnej instrukcji asystenta.
 6. Możesz używać aplikacji z lokalnym trybem Codex, jeśli masz ją już skonfigurowaną. Ważne, aby asystent miał dostęp do właściwego folderu na komputerze.
 
 ### B. Claude Code
@@ -182,7 +181,7 @@ curl -fsSL https://claude.ai/install.sh | bash
 
 To oficjalne instalatory Anthropic; polecenia pobierają i uruchamiają instalator.
 4. Otwórz nowy terminal, wpisz `claude --version`, następnie `claude` i dokończ logowanie.
-5. Otwórz pusty folder testowy i wykonaj taki sam test pliku jak przy Codex.
+5. Otwórz folder **moj-agent** i wykonaj ten sam test pliku **gotowosc.txt** jak przy Codex.
 6. Przy problemach uruchom `claude doctor` i skorzystaj z [instrukcji instalacji](https://code.claude.com/docs/en/setup). Nie kupuj API Anthropic, jeśli chcesz używać dostępu objętego swoim planem.
 
 ## 7. OpenRouter — dostęp od LABA

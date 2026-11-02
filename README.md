@@ -6,11 +6,21 @@ Zaczynasz od zera. Kończysz z własnym linkiem: wpisujesz hasło, wysyłasz wia
 
 Nie musisz wcześniej programować ani znać komend. Ta strona prowadzi Cię po kolei. Codex lub Claude Code pomoże pisać kod, a Ty będziesz sprawdzać efekty.
 
+**To jest główna trasa: etapy 1–8.** W instrukcjach pomocniczych zobaczysz też numery punktów, np. punkt 3 instalacji. To mniejsze czynności wewnątrz etapu, a nie kolejna lista zadań. W zgłoszeniu pomocy podaj etap z tej strony i nazwę pliku, który czytasz.
+
+| Miejsce | Co tam robisz |
+|---|---|
+| Rozmowa z Codex / Claude Code | Wklejasz prompty, czyli zadania dla AI |
+| Terminal, np. PowerShell | Wpisujesz komendy i uruchamiasz stronę |
+| Przeglądarka | Czytasz tę instrukcję i oglądasz swoją stronę |
+
+Na razie zostaw tę stronę otwartą. Instrukcję z linku możesz otworzyć w drugiej karcie: prawy przycisk myszy → „Otwórz link w nowej karcie”. Po wykonaniu zadania wracasz tutaj.
+
 ## Pierwszy raz tutaj? Zacznij od tego
 
 ### [→ Otwórz pierwszą instrukcję: jak uruchomić terminal](TERMINAL_I_PLIKI.md#1-otwórz-terminal)
 
-Przeczytaj w niej **punkty 1–2**, wybierając swój system: Windows albo macOS. Kiedy zobaczysz ścieżkę swojego folderu, wróć tutaj do kroku 2.
+Przeczytaj w niej **punkty 1–2**, wybierając swój system: Windows albo macOS. Kiedy zobaczysz ścieżkę swojego folderu, wróć tutaj do etapu 2.
 
 **Nie musisz czytać wszystkich plików z listy powyżej.** Poniżej masz jedną trasę. W każdym kroku otwierasz wskazaną instrukcję, robisz zadanie i sprawdzasz wynik.
 
@@ -64,7 +74,7 @@ Asystent tylko pokazuje kod, a pliku nie ma? [Sprawdź tryb pracy](PROBLEMY.md#p
 
 Teraz przechodzisz do ćwiczeń. Wklejasz pierwszy prompt do asystenta i otwierasz wynik w przeglądarce.
 
-**Otwórz:** [Lekcja 1 — krok 1: uruchom stronę](lekcja_01.md#1-uruchom-stronę).
+**Otwórz:** [Etap 4 w lekcji 1: uruchom stronę](lekcja_01.md#1-uruchom-stronę).
 
 **Ten krok masz za sobą, gdy:** w przeglądarce widzisz „Mój chatbot”, pole wiadomości i przycisk. Czat jeszcze nie musi odpowiadać.
 
@@ -77,9 +87,9 @@ Strona się nie otwiera? [Sprawdź serwer i adres](PROBLEMY.md#p09).
 
 Podłączasz model AI kluczem otrzymanym od LABA. Asystent przygotowuje aplikację, a Ty wpisujesz klucz lokalnie.
 
-**Otwórz:** [Lekcja 1 — krok 2: podłącz model](lekcja_01.md#2-podłącz-model).
+**Otwórz:** [Etap 5 w lekcji 1: podłącz model](lekcja_01.md#2-podłącz-model).
 
-Nie wiesz, gdzie wpisać klucz? [Tutaj pokazujemy plik, miejsce i format](KONFIGURACJA_I_HASLO.md).
+Nie wiesz, gdzie wpisać klucz? [Tutaj pokazujemy plik, miejsce i format](KONFIGURACJA_I_HASLO.md). W tym etapie uzupełniasz tylko klucz i model. Hasło dodasz w etapie 6.
 
 Chcesz wybrać model? [Luna, Gemini Flash, Terra i Sonnet — dokładne nazwy, koszty i zmiana w .env.local](MODELE_DO_CWICZEN.md). Na pierwszy test użyj modelu wskazanego przez prowadzącego; porównania są opcjonalne.
 
@@ -94,7 +104,7 @@ Dostęp do modelu w chatbocie zapewnia LABA przez OpenRouter. To oddzielny dost�
 
 Twój chatbot ma działać dla osób, którym podasz dostęp. Ustawiasz jedno hasło i sprawdzasz je w nowym prywatnym oknie przeglądarki.
 
-**Otwórz:** [Lekcja 1 — krok 3: dodaj hasło](lekcja_01.md#3-dodaj-hasło).
+**Otwórz:** [Etap 6 w lekcji 1: dodaj hasło](lekcja_01.md#3-dodaj-hasło).
 
 **Ten krok masz za sobą, gdy:** błędne hasło blokuje dostęp, a poprawne pozwala rozmawiać z chatbotem. Po wyjściu hasło jest potrzebne ponownie.
 
@@ -136,7 +146,7 @@ Zapisz link do aplikacji i własnego repo. Jeżeli coś jeszcze nie działa, zan
 
 [Znajdź swój komunikat w pomocy](PROBLEMY.md). Każdy problem ma opis pierwszej czynności i poprawnego wyniku.
 
-Jeżeli potrzebujesz wsparcia na czacie kursu, napisz: **numer kroku, system, co zrobiłeś i jaki komunikat widzisz**. Ukryj klucze i hasła.
+Jeżeli potrzebujesz wsparcia na czacie kursu, napisz: **etap 1–8 z tej strony, nazwę czytanego pliku, system, co zrobiłeś i jaki komunikat widzisz**. Ukryj klucze i hasła.
 
 Nieznane słowo? [Otwórz słowniczek](SLOWNICZEK.md). Chcesz odnaleźć konkretną instrukcję? [Otwórz spis pomocy](POMOC.md).
 

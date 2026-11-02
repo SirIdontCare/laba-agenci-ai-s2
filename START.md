@@ -2,20 +2,24 @@
 
 **Efekt lekcji 1: własny chatbot pod linkiem, dostępny po wpisaniu hasła.**
 
+**Pierwszy raz? Otwórz [stronę startową i zacznij od etapu 1](README.md#krok-1).** Ten plik jest skrótem tej samej trasy, nie dodatkowym zadaniem.
+
 Jeżeli robisz to pierwszy raz, nie musisz od razu rozumieć wszystkich nazw. Otwórz etap, wykonaj instrukcję i sprawdź wynik. [Słowniczek](SLOWNICZEK.md) jest pod ręką.
 
 ## Twoja kolejność pracy
 
-| Etap | Co robisz | Oczekiwany efekt | Instrukcja |
+| Etap z README | Co robisz | Oczekiwany efekt | Instrukcja |
 |---|---|---|---|
-| 1 | Instalujesz Node.js, npm i Git; zakładasz konta | Komendy pokazują wersje, konta działają | [Instalacja](INSTALACJA_I_KONTA.md) |
-| 2 | Tworzysz folder aplikacji | Znasz jego ścieżkę | [Terminal i pliki](TERMINAL_I_PLIKI.md) |
-| 3 | Uruchamiasz Codex lub Claude Code | Asystent tworzy lokalny plik testowy | [Asystent od zera](ASYSTENT_OD_ZERA.md) |
-| 4 | Budujesz stronę i czat | Strona lokalna odpowiada przez model | [Lekcja 1, kroki 1–2](lekcja_01.md) |
-| 5 | Wpisujesz konfigurację i ustawiasz hasło | Bez hasła czat jest zablokowany | [Klucz i hasło](KONFIGURACJA_I_HASLO.md) |
-| 6 | Zapisujesz kod w swoim repo | Commit widać na Twoim GitHub | [Git](GIT_KROK_PO_KROKU.md) |
-| 7 | Publikujesz projekt | Link działa bez lokalnego serwera | [GitHub i Vercel](GITHUB_I_VERCEL.md) |
-| 8 | Testujesz hasło i odpowiedź | Błędne hasło blokuje, poprawne wpuszcza | [Test po wdrożeniu](GITHUB_I_VERCEL.md#9-test-wyniku) |
+| 1 | Otwierasz terminal i sprawdzasz folder | Widzisz ścieżkę swojego folderu | [Terminal i pliki](TERMINAL_I_PLIKI.md) |
+| 2 | Instalujesz Node.js, npm i Git oraz tworzysz moj-agent | Narzędzia pokazują wersje, znasz folder aplikacji | [Instalacja](INSTALACJA_I_KONTA.md) |
+| 3 | Uruchamiasz jednego asystenta | W moj-agent powstaje gotowosc.txt | [Asystent od zera](ASYSTENT_OD_ZERA.md) |
+| 4 | Budujesz pierwszą stronę | Widzisz tytuł i pole wiadomości; AI jeszcze nie odpowiada | [Lekcja 1 — etap 4](lekcja_01.md) |
+| 5 | Podłączasz model | Chatbot odpowiada i pamięta imię w bieżącej rozmowie | [Lekcja 1 — etap 5](lekcja_01.md#2-podłącz-model) |
+| 6 | Dodajesz hasło | Błędne hasło blokuje, poprawne wpuszcza | [Klucz i hasło — etap 6](KONFIGURACJA_I_HASLO.md#env-haslo) |
+| 7 | Zapisujesz kod i publikujesz aplikację | Masz własny adres z Vercel | [Git](GIT_KROK_PO_KROKU.md) i [GitHub / Vercel](GITHUB_I_VERCEL.md) |
+| 8 | Testujesz opublikowany czat | Link działa po wyłączeniu lokalnego serwera | [Test po wdrożeniu](GITHUB_I_VERCEL.md#9-test-wyniku) |
+
+[Konfiguracja i format pliku .env.local](KONFIGURACJA_I_HASLO.md) przyda się w etapach 5–6.
 
 ## Dwa foldery
 

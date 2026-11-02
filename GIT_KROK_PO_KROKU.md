@@ -2,6 +2,8 @@
 
 **Git zapisuje wersje na komputerze. GitHub przechowuje je w internecie.**
 
+**To pomoc do etapu 7 z README.** Punkty 1–11 poniżej opisują zapis i wysłanie kodu, nie kolejne etapy całego kursu.
+
 Komendy wykonuj w terminalu, w **folderze swojej aplikacji**, nie w folderze materiałów kursu. W PowerShell i na Macu komendy Git są takie same.
 
 ## 1. Co robi każda komenda?
@@ -42,6 +44,8 @@ git status
 - Jeśli pojawiają się pliki z wielu innych projektów lub całego folderu użytkownika, zatrzymaj się: prawdopodobnie jesteś za wysoko.
 
 ## 3. Ustaw autora commitów
+
+**Najpierw musi istnieć repozytorium aplikacji z punktu 2.** Nie wykonuj tych poleceń podczas samego zakładania konta GitHub. Jeśli git status zwraca „not a git repository”, wróć do punktu 2.
 
 W poniższych poleceniach zastąp przykładowe dane swoimi. Możesz użyć adresu noreply z ustawień e-mail GitHub. Ustawienia bez --global dotyczą tego repozytorium:
 
@@ -126,6 +130,59 @@ git branch -m main
 
 Jeśli main już istnieje lub nie wiesz, na jakiej gałęzi pracujesz, poproś asystenta o wyjaśnienie. Nie wymuszaj zmiany.
 
+<a id="logowanie"></a>
+### Zaloguj terminal do GitHub — przed pierwszym push
+
+**To część etapu 7.** Zalogowana strona GitHub nie loguje automatycznie terminala. Poniżej używamy GitHub CLI (`gh`), oficjalnego narzędzia GitHub. Nie jest edytorem kodu.
+
+Jeśli push już działa na tym komputerze, zachowaj obecne logowanie i pomiń tę część. Jeśli nie masz skonfigurowanego logowania, wykonaj kolejne czynności.
+
+**Windows — zainstaluj gh:**
+
+1. Otwórz [oficjalne wydania GitHub CLI](https://github.com/cli/cli/releases/latest).
+2. W Assets wybierz instalator kończący się na `windows_amd64.msi` dla typowego komputera x64 albo `windows_arm64.msi` dla Windows na ARM. Typ systemu sprawdzisz w Ustawienia → System → Informacje.
+3. Uruchom pobrany instalator i przejdź instalację.
+4. Otwórz nowe okno PowerShell.
+
+**macOS — zainstaluj gh:**
+
+1. Otwórz tę samą stronę wydań.
+2. W Assets pobierz instalator kończący się na `macOS_universal.pkg`.
+3. Uruchom go, dokończ instalację i otwórz nowy Terminal.
+
+**Oba systemy — sprawdź instalację w terminalu:**
+
+```bash
+gh --version
+```
+
+Prawidłowy wynik zaczyna się od `gh version`. Jeżeli programu nie znaleziono, otwórz nowe okno po instalacji. Nie wykonuj kolejnych komend, dopóki sprawdzenie wersji nie działa.
+
+**Teraz zaloguj się — w terminalu, nie w rozmowie AI:**
+
+```bash
+gh auth login --hostname github.com --git-protocol https --web
+```
+
+1. Jeśli padnie pytanie o uwierzytelnienie Git poświadczeniami GitHub, wybierz **Yes / Y**.
+2. Jeśli terminal pokaże jednorazowy kod, skopiuj go i naciśnij Enter, gdy program poprosi o otwarcie przeglądarki.
+3. Na stronie wskazanej przez logowanie sprawdź konto i wpisz kod. Hasło do konta wpisujesz wyłącznie w oficjalnym formularzu GitHub.
+4. Zatwierdź logowanie aplikacji GitHub CLI.
+5. Wróć do terminala i poczekaj na potwierdzenie.
+
+Następnie, po jednym wierszu:
+
+```bash
+gh auth setup-git --hostname github.com
+gh auth status --hostname github.com
+```
+
+Pierwsza komenda pozwala Git korzystać z tego logowania. Druga pokazuje stan konta. **Gotowe, gdy:** widzisz, że jesteś zalogowany do github.com jako właściciel repo.
+
+Jeśli po tym `git push` nadal prosi o `Username` / `Password`, anuluj przez Ctrl+C. Sprawdź wynik logowania i adres origin; nie wpisuj hasła do strony jako hasła Git. Przy innym zalogowanym koncie zgłoś ten fakt asystentowi, zamiast tworzyć drugie repo. [P21](PROBLEMY.md#p21).
+
+Źródła: [instalacja GitHub CLI](https://github.com/cli/cli#installation), [logowanie przeglądarkowe](https://cli.github.com/manual/gh_auth_login), [połączenie logowania z Git](https://cli.github.com/manual/gh_auth_setup-git).
+
 Sprawdź adres jeszcze raz i wyślij:
 
 ```bash
@@ -189,5 +246,7 @@ Jeśli pojawi się konflikt albo odmowa, zatrzymaj się i poproś o pomoc. Nie w
 | Sekret w repo | [P23](PROBLEMY.md#p23) |
 
 Źródła: [zapis zmian](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository.html), [pierwsze kroki](https://git-scm.com/docs/gittutorial), [wysyłanie commitów](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository).
+
+**[Kod widać na GitHub → kontynuuj etap 7 na Vercel](GITHUB_I_VERCEL.md#5-konto-vercel)** · [Wróć do etapu 7](README.md#krok-7)
 
 [Pomoc](POMOC.md) · [Publikacja na Vercel](GITHUB_I_VERCEL.md)

@@ -2,6 +2,8 @@
 
 **Na końcu otwierasz link w prywatnym oknie, wpisujesz hasło i dostajesz odpowiedź AI.** Kod w GitHub i działająca aplikacja to dwa osobne etapy.
 
+**To instrukcja etapu 7 z README; punkt 9 to końcowy test z etapu 8.** Punkty 1–10 w tym pliku są czynnościami publikacji.
+
 ## 1. Zanim zaczniesz
 
 - Lokalna aplikacja działa.
@@ -47,6 +49,8 @@ To adres kodu, nie gotowy link do rozmowy z chatbotem.
 
 Pełna instrukcja z objaśnieniem poleceń: [Git krok po kroku](GIT_KROK_PO_KROKU.md).
 
+**Przed wysłaniem kodu wykonaj [logowanie terminala do GitHub](GIT_KROK_PO_KROKU.md#logowanie)**. Znajdziesz tam instalatory dla Windows i Maca, logowanie przeglądarką oraz sprawdzenie konta. Jeśli masz już działające logowanie Git, zachowaj je.
+
 Możesz zlecić asystentowi:
 
 ```text
@@ -54,6 +58,10 @@ Chcę wysłać obecną aplikację do mojego repo:
 [WKLEJ ADRES HTTPS SWOJEGO REPO].
 
 Sprawdź folder, stan Git, gałąź i obecny remote.
+Jeśli repo lokalne nie istnieje, utwórz je dopiero po sprawdzeniu folderu.
+Autora commitów konfiguruj dopiero w istniejącym repo aplikacji.
+Jeśli brak logowania do GitHub, użyj instrukcji gh z materiałów kursu;
+logowanie przeglądarkowe wykonam sam.
 Sprawdź pliki do commita bez odczytywania sekretów.
 Jeśli nie ma commita, przygotuj go z opisem obecnego działającego stanu.
 Nie nadpisuj istniejącego remote ani cudzej historii.
@@ -102,6 +110,8 @@ W Name nie wpisujesz całego wiersza ze znakiem =. W Value wpisujesz samą warto
 
 Wybierz środowisko właściwe dla testowanego linku: **Production** dla głównego wdrożenia z gałęzi produkcyjnej. Jeśli testujesz **Preview**, ono również potrzebuje swoich ustawień. Ustawienia lokalne nie kopiują się automatycznie na hosting.
 
+![Przykładowy widok wpisywania zmiennej na Vercel](assets/vercel-zmienne.svg)
+
 Nie dodawaj prefiksu NEXT_PUBLIC_ do klucza, hasła ani sekretu. Nie przesyłaj zrzutu panelu z widocznymi wartościami.
 
 ## 8. Uruchom wdrożenie
@@ -109,12 +119,16 @@ Nie dodawaj prefiksu NEXT_PUBLIC_ do klucza, hasła ani sekretu. Nie przesyłaj 
 1. Kliknij **Deploy**.
 2. Poczekaj na wynik. Nie odświeżaj losowo i nie uruchamiaj wielu wdrożeń naraz.
 3. Sukces pozwoli otworzyć adres aplikacji.
-4. Przy błędzie otwórz logi budowania i odszukaj pierwszy konkretny błąd.
+4. Przy błędzie wejdź w **Deployments → nieudane wdrożenie → Build Logs / Building**. Sposób wybrania tekstu do pomocy pokazuje [P25](PROBLEMY.md#p25).
 5. Jeśli poprawiasz kod lokalnie, zrób commit i push — przy poprawnym połączeniu Git uruchomi kolejne wdrożenie.
 
 **Zmieniłeś konfigurację w panelu po wdrożeniu?** Uruchom **Redeploy**. Wcześniej uruchomiona wersja nie musi mieć nowych wartości.
 
+**[Wdrożenie gotowe → przejdź do testu poniżej](#9-test-wyniku)** · [Wróć do etapu 7](README.md#krok-7)
+
 ## 9. Test wyniku
+
+**Etap 8 z README.** Zatrzymaj lokalny serwer przez Ctrl+C i otwórz link Vercel w nowym prywatnym oknie przeglądarki. Adres localhost nie służy do tej próby.
 
 | Próba | Oczekiwany wynik |
 |---|---|
@@ -129,6 +143,8 @@ Jeśli Vercel prosi o zalogowanie się do konta Vercel, może to być ochrona wd
 
 **Gotowe, gdy:** testy przechodzą pod właściwym linkiem. Zapisz link w swoich notatkach. Nie wpisuj hasła w URL i nie publikuj go razem z linkiem w publicznym repo.
 
+**[Testy działają → ukończ etap 8](README.md#krok-8).**
+
 ## 10. Co zapisać po zajęciach
 
 - Link do aplikacji.
@@ -137,5 +153,7 @@ Jeśli Vercel prosi o zalogowanie się do konta Vercel, może to być ochrona wd
 - Krótką notatkę: co sprawdzono i co pozostało do poprawy.
 
 Źródła: [Vercel i repozytoria Git](https://vercel.com/docs/git), [zmienne środowiskowe](https://vercel.com/docs/environment-variables), [konta GitHub](https://docs.github.com/en/account-and-profile/how-tos/account-management/creating-an-account-on-github).
+
+[Wróć do etapu 7](README.md#krok-7) · [Finał: etap 8](README.md#krok-8)
 
 [Pomoc](POMOC.md) · [Problemy](PROBLEMY.md) · [Lekcja 1](lekcja_01.md)

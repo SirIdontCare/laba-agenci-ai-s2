@@ -1,6 +1,6 @@
 # Modele do ćwiczeń — wybierz AI dla swojego chatbota
 
-**Jesteś w [kroku 5 naszej drogi](README.md#krok-5): strona już działa, teraz ma zacząć odpowiadać.** Ten poradnik pokazuje, jaki model wybrać i gdzie wpisać jego nazwę.
+**Jesteś w [etapie 5 naszej drogi](README.md#krok-5): strona już działa, teraz ma zacząć odpowiadać.** Ten poradnik pokazuje, jaki model wybrać i gdzie wpisać jego nazwę.
 
 Na pierwsze uruchomienie użyj modelu wskazanego przez prowadzącego. Jeśli możesz wybrać samodzielnie, **GPT-6 Luna to najtańszy punkt startu z poniższej czwórki**. Najpierw uzyskaj jedną działającą odpowiedź. Porównania możesz zrobić później.
 
@@ -171,7 +171,7 @@ Dostępność w publicznym katalogu nie potwierdza uprawnień klucza LABA. To ze
 
 ## Wracasz na szlak
 
-Jeśli chatbot już odpowiada, wróć do [kroku 6: dodaj hasło](README.md#krok-6). Jeśli hasło i publikację masz za sobą, możesz zakończyć na działającym czacie — porównanie modeli jest opcjonalne.
+Jeśli chatbot już odpowiada, wróć do [etapu 6: dodaj hasło](README.md#krok-6). Jeśli hasło i publikację masz za sobą, możesz zakończyć na działającym czacie — porównanie modeli jest opcjonalne.
 
 Źródła: karty modeli podlinkowane w tabeli, [wybór modelu w OpenRouter](https://openrouter.ai/docs/quickstart), [pliki środowiskowe Next.js](https://nextjs.org/docs/app/guides/environment-variables), [zmienne środowiskowe Vercel](https://vercel.com/docs/environment-variables/managing-environment-variables).
 

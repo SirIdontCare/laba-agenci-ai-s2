@@ -2,6 +2,8 @@
 
 **Nie reinstaluj wszystkiego.** Zacznij od komunikatu, który widzisz. Jeśli podane sprawdzenie nie pomaga, zatrzymaj się i prześlij zgłoszenie według szablonu na końcu.
 
+**W zgłoszeniu podaj etap 1–8 z README i nazwę czytanego pliku.** Oznaczenia P01–P32 to numery problemów, nie etapy kursu.
+
 ## Szybki wybór
 
 | Objaw | Pomoc |
@@ -133,7 +135,7 @@ codex --version
 
 **Co to może znaczyć:** To problem dostępu do asystenta piszącego kod.
 
-**Zrób teraz:** Sprawdź konto i wybraną metodę logowania. Dokończ oficjalny formularz w przeglądarce. Zweryfikuj dostęp na swoim planie lub w organizacji. Przy limicie przeczytaj informację o odnowieniu; nie próbuj wklejać klucza LABA jako zamiennika.
+**Zrób teraz:** W [instrukcji asystenta](ASYSTENT_OD_ZERA.md) odszukaj tabelę wyboru i opis tego, co pojawia się po logowaniu. Odczytaj nazwę planu w ustawieniach konta. Przy ekranie zakupu zgłoś plan i nazwę klienta; przy koncie firmowym sprawdź organizację i dostęp z administratorem. Jeśli widzisz limit, odczytaj czas odnowienia. Klucz LABA nie jest zamiennikiem logowania do asystenta.
 
 **Gotowe, gdy:** Asystent przyjmuje zadanie i tworzy lokalny plik testowy.
 
@@ -383,7 +385,7 @@ git log --oneline -5
 
 **Co to może znaczyć:** Terminal nie ma dostępu albo adres repo jest błędny.
 
-**Zrób teraz:** Sprawdź właściciela i adres przez git remote -v. Otwórz repo w przeglądarce na właściwym koncie. Dokończ oficjalne logowanie Git; dla HTTPS może pomagać menedżer poświadczeń.
+**Zrób teraz:** Sprawdź właściciela i adres przez git remote -v. Otwórz repo w przeglądarce na właściwym koncie. Wykonaj [logowanie przez przeglądarkę z gh, krok po kroku](GIT_KROK_PO_KROKU.md#logowanie), a następnie ponów push. Jeśli terminal pyta o Username / Password, anuluj przez Ctrl+C i wróć do tej instrukcji; nie wpisuj tam hasła do strony.
 
 
 **Komendy do tego sprawdzenia:**
@@ -442,7 +444,13 @@ git remote -v
 
 **Co to może znaczyć:** Proces budowania aplikacji zakończył się błędem.
 
-**Zrób teraz:** Otwórz logi i znajdź pierwszy konkretny błąd. Sprawdź Root Directory i obecność package.json. Spróbuj tego samego builda lokalnie. Przekaż asystentowi komunikat po ukryciu sekretów.
+**Zrób teraz:** W panelu projektu Vercel otwórz **Deployments**, wybierz wdrożenie ze statusem **Error / Failed**, a następnie **Build Logs / Building**. W logach znajdź pierwsze wystąpienie `Error`, `Failed to compile`, `Module not found` albo `Type error`. Skopiuj tę linię oraz kilka wierszy przed nią i po niej.
+
+![Przykład wyboru właściwego komunikatu z logów budowania](assets/vercel-logi.svg)
+
+Na przykład: `Module not found: Can't resolve './brakujacy-plik'` mówi więcej niż ostatnie ogólne `Build failed`. To przykładowy błąd, nie polecenie do wykonania.
+
+Jeśli nie wiesz, którą linię wybrać, skopiuj końcowe około 30 wierszy po sprawdzeniu, czy nie ma tam sekretów. Nie musisz sam diagnozować kodu. Przekaż asystentowi tekst z dopiskiem: „Etap 7, plik GITHUB_I_VERCEL.md, Vercel nie zbudował aplikacji”. Sprawdzenie folderu i package.json zleć asystentowi.
 
 
 **Komendy do tego sprawdzenia:**
@@ -514,7 +522,7 @@ npm run build
 
 **Co to może znaczyć:** Po przerwie brak kontekstu, niekoniecznie uszkodzony projekt.
 
-**Zrób teraz:** Otwórz właściwy folder. Poproś asystenta o sprawdzenie struktury, package.json i stanu Git bez odczytywania .env. Podaj ostatni wykonany krok lekcji.
+**Zrób teraz:** Otwórz właściwy folder. Poproś asystenta o sprawdzenie struktury, package.json i stanu Git bez odczytywania .env. Podaj ostatni wykonany etap 1–8 z README i nazwę czytanego pliku.
 
 **Gotowe, gdy:** Uruchamiasz istniejącą aplikację i wracasz do jednego kroku.
 
@@ -548,7 +556,8 @@ Wklej do Codex lub Claude Code i uzupełnij:
 
 ```text
 Problem: [NUMER P Z TEJ INSTRUKCJI]
-Krok lekcji:
+Etap 1–8 z README:
+Czytany plik i punkt:
 System i terminal:
 Co uruchamiam:
 Dokładny komunikat bez sekretów:
@@ -563,8 +572,10 @@ Nie wyłączaj hasła ani nie zwiększaj płatnych limitów, aby obejść błąd
 
 ## Zgłoszenie na czat kursu
 
-Podaj numer problemu, system, narzędzie, czynność, oczekiwany wynik i bezpieczny komunikat błędu. Dopisz, co już sprawdziłeś. Zrzut powinien pokazywać problem, bez haseł, kluczy i zawartości .env.local.
+Podaj etap 1–8 z README, nazwę pliku, numer problemu P, system, narzędzie, czynność, oczekiwany wynik i bezpieczny komunikat błędu. Dopisz, co już sprawdziłeś. Zrzut powinien pokazywać problem, bez haseł, kluczy i zawartości .env.local.
 
 Źródła do pogłębienia: [PowerShell](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_command_precedence), [Claude Code](https://code.claude.com/docs/en/setup), [GitHub push](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository), [Vercel zmienne](https://vercel.com/docs/environment-variables). Sekcje opisują możliwe przyczyny — sam kod błędu nie zawsze wystarcza do diagnozy.
+
+[Wróć do swojej trasy w README](README.md)
 
 [Pomoc](POMOC.md) · [Lekcja 1](lekcja_01.md)

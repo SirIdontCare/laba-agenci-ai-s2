@@ -4,7 +4,9 @@
 
 Budujesz z Codex lub Claude Code. Ty określasz efekt i sprawdzasz, czy działa.
 
-**Pierwszy raz?** [Pomoc od zera](POMOC.md) prowadzi od instalacji po działający link. Nieznane słowo sprawdzisz w [słowniczku](SLOWNICZEK.md).
+**Pierwszy raz? Zacznij od [README — etapy 1–3](README.md#krok-1).** W tej lekcji kontynuujemy tę samą numerację: etapy 4–8.
+
+[Pomoc od zera](POMOC.md) prowadzi od instalacji po działający link. Nieznane słowo sprawdzisz w [słowniczku](SLOWNICZEK.md).
 
 ## Przygotowanie
 
@@ -12,9 +14,12 @@ Potrzebujesz narzędzi z [instrukcji instalacji](INSTALACJA_I_KONTA.md), dostęp
 
 Utwórz folder **moj-agent** i otwórz go w Codex lub Claude Code. To tutaj powstaje aplikacja. Folder pobranych materiałów trzymaj osobno.
 
-Wykonuj poniższe kroki w jednej rozmowie z asystentem. Kolejny prompt wklej dopiero po sprawdzeniu poprzedniego kroku.
+Wykonuj poniższe etapy w jednej rozmowie z asystentem. Kolejny prompt wklej dopiero po sprawdzeniu poprzedniego etapu.
 
-## 1. Uruchom stronę
+**Bloki „Wklej do asystenta” są instrukcjami dla AI.** Kopiuj je w całości. Nie musisz teraz rozumieć każdej technicznej nazwy w środku. Twoje czynności są poniżej, pod „Ty” i „Sprawdź”.
+
+<a id="1-uruchom-stronę"></a>
+## Etap 4. Uruchom stronę
 
 **Pomoc do tego etapu:** [instalacja asystenta](ASYSTENT_OD_ZERA.md) · [terminal i właściwy folder](TERMINAL_I_PLIKI.md) · [brak package.json](PROBLEMY.md#p07) · [localhost nie działa](PROBLEMY.md#p09).
 
@@ -29,7 +34,9 @@ jedną konkretną czynność i poczekaj na wynik.
 Sprawdź bieżący folder oraz Node.js, npm i Git.
 W tym folderze przygotuj minimalny Next.js App Router z TypeScript.
 Jeśli projekt już istnieje, kontynuuj go zamiast tworzyć nowy.
-Nie nadpisuj moich plików. W PowerShell używaj npm.cmd i npx.cmd,
+Plik gotowosc.txt jest tylko testem z etapu 3. Jeśli blokuje utworzenie
+projektu w tym folderze, możesz usunąć wyłącznie ten plik testowy.
+Nie nadpisuj innych moich plików. W PowerShell używaj npm.cmd i npx.cmd,
 jeśli uruchamianie plików .ps1 jest blokowane.
 
 Na stronie pokaż „Mój chatbot”, puste miejsce na rozmowę,
@@ -47,9 +54,14 @@ Jeśli serwer musisz uruchomić sam, wpisz w terminalu w folderze aplikacji:
 - Windows PowerShell: `npm.cmd run dev`
 - macOS lub CMD: `npm run dev`
 
-Terminal z serwerem zostaw otwarty.
+Terminal z serwerem zostaw otwarty. Jeśli sam wpisujesz komendy, użyj osobnego okna terminala — nie wpisuj npm do aktywnej rozmowy z AI.
 
-## 2. Podłącz model
+![Przykład terminala z działającym serwerem i adresem strony](assets/terminal-serwer.svg)
+
+**[Dalej → etap 5: podłącz model](#2-podłącz-model)** · [Twoje miejsce na trasie](README.md#krok-4)
+
+<a id="2-podłącz-model"></a>
+## Etap 5. Podłącz model
 
 **Pomoc do tego etapu:** [otwieranie .env.local i wpisywanie klucza](KONFIGURACJA_I_HASLO.md) · [lista modeli i zmiana modelu](MODELE_DO_CWICZEN.md) · [brak konfiguracji](PROBLEMY.md#p12) · [błąd 401](PROBLEMY.md#p13) · [niedostępny model](PROBLEMY.md#p14).
 
@@ -87,7 +99,9 @@ OPENROUTER_MODEL=tu_wpisz_id_modelu_od_prowadzacego
 ```
 
 3. Zapisz plik. Sprawdź, czy nie nazywa się .env.local.txt.
-4. Zatrzymaj serwer przez Ctrl+C i uruchom go ponownie.
+4. Zatrzymaj serwer przez Ctrl+C i uruchom go ponownie: Windows PowerShell `npm.cmd run dev`, macOS `npm run dev`.
+
+**Na tym etapie ustawiasz tylko OPENROUTER_API_KEY i OPENROUTER_MODEL.** Ekran hasła jeszcze nie powstał, więc brak pytania o hasło jest prawidłowy.
 
 Dokładne identyfikatory Luny, Gemini Flash, Terry i Sonneta oraz instrukcję ich zmiany znajdziesz w [poradniku modeli](MODELE_DO_CWICZEN.md). Wybieraj model dopuszczony na kluczu kursowym.
 
@@ -100,7 +114,10 @@ Nie wklejaj wartości klucza do asystenta, grupy ani repozytorium.
 
 **Gotowe, gdy:** model odpowiada i pamięta imię w tej rozmowie. Po odświeżeniu historia może zniknąć — zapis rozmów zrobimy później.
 
-## 3. Dodaj hasło
+**[Dalej → etap 6: dodaj hasło](#3-dodaj-hasło)** · [Twoje miejsce na trasie](README.md#krok-5)
+
+<a id="3-dodaj-hasło"></a>
+## Etap 6. Dodaj hasło
 
 **Pomoc do tego etapu:** [różnica między hasłem a SESSION_SECRET i test dostępu](KONFIGURACJA_I_HASLO.md) · [problemy z hasłem](PROBLEMY.md#p16).
 
@@ -146,7 +163,12 @@ Podaj wykonane sprawdzenia i te, które mam wykonać ręcznie.
 
 Samo schowanie czatu za formularzem nie wystarczy. Hasło ma chronić również wysyłanie wiadomości do modelu.
 
-## 4. Opublikuj i sprawdź link
+Prywatne okno: Chrome / Edge → menu z trzema kropkami → „Nowe okno incognito” / „Nowe okno InPrivate”; Safari → Plik → „Nowe okno prywatne”.
+
+**[Dalej → etap 7: opublikuj aplikację](#4-opublikuj-i-sprawdź-link)** · [Twoje miejsce na trasie](README.md#krok-6)
+
+<a id="4-opublikuj-i-sprawdź-link"></a>
+## Etap 7. Opublikuj aplikację
 
 **Pomoc do tego etapu:** [Git z wyjaśnieniem każdej komendy](GIT_KROK_PO_KROKU.md) · [GitHub i Vercel po kolei](GITHUB_I_VERCEL.md) · [build failed](PROBLEMY.md#p25) · [lokalnie działa, online nie](PROBLEMY.md#p27).
 
@@ -191,6 +213,8 @@ Wartości przenieś samodzielnie z lokalnego pliku do panelu. Nie przesyłaj zrz
 
 **Efekt końcowy: link + działające hasło + prawdziwa odpowiedź AI.**
 
+**[Dalej → etap 8: końcowe sprawdzenie](#koniec)** · [Twoje miejsce na trasie](README.md#krok-7)
+
 ## Gdy coś nie działa
 
 Najpierw znajdź komunikat w [32 blokach pomocy](PROBLEMY.md). Każdy opisuje możliwą przyczynę, pierwszą czynność, poprawny wynik i dalszy krok.
@@ -198,7 +222,8 @@ Najpierw znajdź komunikat w [32 blokach pomocy](PROBLEMY.md). Każdy opisuje mo
 Wklej do asystenta:
 
 ```text
-Jestem w kroku [NUMER].
+Jestem w etapie [4 / 5 / 6 / 7 / 8] z README.
+Czytam plik lekcja_01.md, część [TYTUŁ].
 Używam [WINDOWS / MACOS] i [NAZWA TERMINALA].
 Robię [CZYNNOŚĆ LUB KOMENDA].
 Widzę [KOMUNIKAT BŁĘDU BEZ SEKRETÓW].
@@ -212,12 +237,17 @@ Po naprawie podaj sposób sprawdzenia efektu.
 
 PowerShell blokuje npm? Użyj `npm.cmd` zamiast `npm`. Strona nie odpowiada? Sprawdź, czy serwer działa i czy otwierasz port wypisany w terminalu.
 
-## Koniec
+<a id="koniec"></a>
+## Etap 8. Sprawdź własny link
+
+Otwórz link Vercel w nowym prywatnym oknie po zatrzymaniu lokalnego serwera. Jeśli nie wiesz, gdzie zatrzymać serwer, wróć do instrukcji terminala; zamknięcie samej karty strony nie zatrzymuje programu.
 
 - [ ] Mam link do własnego chatbota.
 - [ ] Bez hasła nie można z niego korzystać.
 - [ ] Po wpisaniu hasła model odpowiada.
 - [ ] Klucz API i hasło nie znajdują się w repozytorium.
+
+**[Ukończone → finał w README](README.md#krok-8).**
 
 Na dziś wystarczy. [Praca domowa](PRACE_DOMOWE.md) pojawi się po zajęciach.
 
