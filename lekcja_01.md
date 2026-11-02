@@ -4,6 +4,8 @@
 
 Budujesz z Codex lub Claude Code. Ty określasz efekt i sprawdzasz, czy działa.
 
+**Pierwszy raz?** [Pomoc od zera](POMOC.md) prowadzi od instalacji po działający link. Nieznane słowo sprawdzisz w [słowniczku](SLOWNICZEK.md).
+
 ## Przygotowanie
 
 Potrzebujesz narzędzi z [instrukcji instalacji](INSTALACJA_I_KONTA.md), dostępu do jednego asystenta, kont GitHub i Vercel oraz klucza OpenRouter od LABA.
@@ -13,6 +15,8 @@ Utwórz folder **moj-agent** i otwórz go w Codex lub Claude Code. To tutaj pows
 Wykonuj poniższe kroki w jednej rozmowie z asystentem. Kolejny prompt wklej dopiero po sprawdzeniu poprzedniego kroku.
 
 ## 1. Uruchom stronę
+
+**Pomoc do tego etapu:** [instalacja asystenta](ASYSTENT_OD_ZERA.md) · [terminal i właściwy folder](TERMINAL_I_PLIKI.md) · [brak package.json](PROBLEMY.md#p07) · [localhost nie działa](PROBLEMY.md#p09).
 
 **Wklej do asystenta:**
 
@@ -46,6 +50,8 @@ Jeśli serwer musisz uruchomić sam, wpisz w terminalu w folderze aplikacji:
 Terminal z serwerem zostaw otwarty.
 
 ## 2. Podłącz model
+
+**Pomoc do tego etapu:** [otwieranie .env.local i wpisywanie klucza](KONFIGURACJA_I_HASLO.md) · [brak konfiguracji](PROBLEMY.md#p12) · [błąd 401](PROBLEMY.md#p13) · [niedostępny model](PROBLEMY.md#p14).
 
 **Wklej do asystenta:**
 
@@ -94,6 +100,8 @@ Nie wklejaj wartości klucza do asystenta, grupy ani repozytorium.
 
 ## 3. Dodaj hasło
 
+**Pomoc do tego etapu:** [różnica między hasłem a SESSION_SECRET i test dostępu](KONFIGURACJA_I_HASLO.md) · [problemy z hasłem](PROBLEMY.md#p16).
+
 Jedno wspólne hasło do Twojego chatbota. Po otwarciu linku najpierw pojawia się ekran z polem hasła.
 
 **Wklej do asystenta:**
@@ -138,6 +146,8 @@ Samo schowanie czatu za formularzem nie wystarczy. Hasło ma chronić również 
 
 ## 4. Opublikuj i sprawdź link
 
+**Pomoc do tego etapu:** [Git z wyjaśnieniem każdej komendy](GIT_KROK_PO_KROKU.md) · [GitHub i Vercel po kolei](GITHUB_I_VERCEL.md) · [build failed](PROBLEMY.md#p25) · [lokalnie działa, online nie](PROBLEMY.md#p27).
+
 **Najpierw wklej do asystenta:**
 
 ```text
@@ -180,6 +190,8 @@ Wartości przenieś samodzielnie z lokalnego pliku do panelu. Nie przesyłaj zrz
 **Efekt końcowy: link + działające hasło + prawdziwa odpowiedź AI.**
 
 ## Gdy coś nie działa
+
+Najpierw znajdź komunikat w [32 blokach pomocy](PROBLEMY.md). Każdy opisuje możliwą przyczynę, pierwszą czynność, poprawny wynik i dalszy krok.
 
 Wklej do asystenta:
 

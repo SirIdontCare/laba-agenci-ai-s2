@@ -6,6 +6,22 @@ Nie musisz umieć programować. Będziemy budować z AI. Ty określasz, co aplik
 
 Zaczynamy od czatu. Kończysz z własną aplikacją, która pamięta rozmowy, korzysta z dokumentów i wykonuje zadania.
 
+## Pierwszy raz? Otwórz pomoc
+
+**[Pomoc od zera — wybierz swój etap](POMOC.md)**
+
+Nie musisz znać komend ani pojęć. Każda instrukcja pokazuje, gdzie coś zrobić i jaki wynik powinien się pojawić.
+
+| Potrzebujesz | Otwórz |
+|---|---|
+| Zainstalować i uruchomić asystenta | [Codex / Claude Code od zera](ASYSTENT_OD_ZERA.md) |
+| Zrozumieć terminal, foldery i pliki | [Podstawy obsługi](TERMINAL_I_PLIKI.md) |
+| Sprawdzić znaczenie słowa | [Słowniczek](SLOWNICZEK.md) |
+| Zapisać kod i wysłać go online | [Komendy Git z wyjaśnieniami](GIT_KROK_PO_KROKU.md) |
+| Ustawić klucz i hasło | [Konfiguracja](KONFIGURACJA_I_HASLO.md) |
+| Opublikować chatbot | [GitHub i Vercel krok po kroku](GITHUB_I_VERCEL.md) |
+| Naprawić konkretny błąd | [32 problemy i pierwsze kroki naprawy](PROBLEMY.md) |
+
 ## Zacznij tutaj
 
 1. **[Zainstaluj narzędzia i załóż konta](INSTALACJA_I_KONTA.md)** — instrukcja dla Windows i macOS.

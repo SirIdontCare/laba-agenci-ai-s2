@@ -2,6 +2,10 @@
 
 Instrukcja dla Windows i macOS. **Osobny edytor kodu nie jest potrzebny.** Pracujemy z Codex albo Claude Code; wystarczy jeden asystent.
 
+**Pierwszy raz w terminalu?** [Zobacz, jak go otworzyć i jak wklejać komendy](TERMINAL_I_PLIKI.md).
+**Pierwsza instalacja Codex / Claude Code?** [Pełna ścieżka do pierwszego pliku](ASYSTENT_OD_ZERA.md).
+**Widzisz błąd?** [Znajdź swój problem](PROBLEMY.md).
+
 ## 1. Co przygotować i kiedy
 
 | Narzędzie / konto | Kiedy | Do czego |
@@ -97,7 +101,11 @@ Prawidłowy wynik wygląda np. `git version 2.56.0.windows.4`.
 3. Jeśli trzeba wywołać instalację ręcznie, wpisz `xcode-select --install`.
 4. Po zakończeniu ponów `git --version`. Pełny Xcode nie jest wymagany do tych ćwiczeń.
 
+Przy zapisywaniu i wysyłaniu aplikacji skorzystaj z [komend Git z objaśnieniami](GIT_KROK_PO_KROKU.md).
+
 ## 5. GitHub i Vercel
+
+[Każdy etap: konto → repo → import → zmienne → wdrożenie → test](GITHUB_I_VERCEL.md).
 
 ### GitHub
 
@@ -111,11 +119,11 @@ Prawidłowy wynik wygląda np. `git version 2.56.0.windows.4`.
 Przed pierwszym commitem ustaw autora. Zastąp przykładowe wartości swoimi danymi; możesz użyć adresu noreply widocznego w ustawieniach e-mail GitHub:
 
 ```bash
-git config --global user.name "Twoje imię i nazwisko"
-git config --global user.email "twoj-adres@example.com"
+git config user.name "Twoje imię i nazwisko"
+git config user.email "twoj-adres@example.com"
 ```
 
-Te komendy ustawiają podpis commitów. **Nie logują do GitHub.**
+Te komendy ustawiają dane autora commitów w obecnym repozytorium aplikacji. **Nie logują do GitHub.**
 
 ### Vercel
 
@@ -127,6 +135,8 @@ Te komendy ustawiają podpis commitów. **Nie logują do GitHub.**
 6. Klucza OpenRouter nie wklejaj do opisu projektu ani kodu frontendu — konfigurujemy go jako zmienną serwerową.
 
 ## 6. Asystent kodowania — wybierz jedną ścieżkę
+
+Poniżej skrót instalacji. [Wersja od zera](ASYSTENT_OD_ZERA.md) wyjaśnia także logowanie, wybór folderu i test, czy asystent naprawdę tworzy pliki.
 
 ### A. Codex
 
@@ -176,6 +186,8 @@ To oficjalne instalatory Anthropic; polecenia pobierają i uruchamiają instalat
 6. Przy problemach uruchom `claude doctor` i skorzystaj z [instrukcji instalacji](https://code.claude.com/docs/en/setup). Nie kupuj API Anthropic, jeśli chcesz używać dostępu objętego swoim planem.
 
 ## 7. OpenRouter — dostęp od LABA
+
+[Jak otworzyć .env.local w Windows lub macOS, wpisać cztery wartości i ustawić hasło](KONFIGURACJA_I_HASLO.md).
 
 Nie musisz zakładać własnego płatnego konta OpenRouter ani kupować kredytów na start, jeśli korzystasz z klucza przekazanego przez LABA. Zaczekaj na przekazanie klucza prywatnym kanałem i zatwierdzoną listę modeli.
 
