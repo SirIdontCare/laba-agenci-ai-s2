@@ -1,42 +1,147 @@
-# Budowanie agentów AI — LABA, edycja 2
+# Zbuduj swojego pierwszego chatbota
 
-**Paweł Paruzel · 12 spotkań · jeden własny agent**
+**LABA AI Agents · edycja 2 · Paweł Paruzel**
 
-Nie musisz umieć programować. Będziemy budować z AI. Ty określasz, co aplikacja ma robić, Codex lub Claude Code pomaga napisać kod, a potem sprawdzasz, czy działa.
+Zaczynasz od zera. Kończysz z własnym linkiem: wpisujesz hasło, wysyłasz wiadomość i AI odpowiada.
 
-Zaczynamy od czatu. Kończysz z własną aplikacją, która pamięta rozmowy, korzysta z dokumentów i wykonuje zadania.
+Nie musisz wcześniej programować ani znać komend. Ta strona prowadzi Cię po kolei. Codex lub Claude Code pomoże pisać kod, a Ty będziesz sprawdzać efekty.
 
-## Pierwszy raz? Otwórz pomoc
+## Pierwszy raz tutaj? Zacznij od tego
 
-**[Pomoc od zera — wybierz swój etap](POMOC.md)**
+### [→ Otwórz pierwszą instrukcję: jak uruchomić terminal](TERMINAL_I_PLIKI.md#1-otwórz-terminal)
 
-Nie musisz znać komend ani pojęć. Każda instrukcja pokazuje, gdzie coś zrobić i jaki wynik powinien się pojawić.
+Przeczytaj w niej **punkty 1–2**, wybierając swój system: Windows albo macOS. Kiedy zobaczysz ścieżkę swojego folderu, wróć tutaj do kroku 2.
 
-| Potrzebujesz | Otwórz |
-|---|---|
-| Zainstalować i uruchomić asystenta | [Codex / Claude Code od zera](ASYSTENT_OD_ZERA.md) |
-| Zrozumieć terminal, foldery i pliki | [Podstawy obsługi](TERMINAL_I_PLIKI.md) |
-| Sprawdzić znaczenie słowa | [Słowniczek](SLOWNICZEK.md) |
-| Zapisać kod i wysłać go online | [Komendy Git z wyjaśnieniami](GIT_KROK_PO_KROKU.md) |
-| Ustawić klucz i hasło | [Konfiguracja](KONFIGURACJA_I_HASLO.md) |
-| Opublikować chatbot | [GitHub i Vercel krok po kroku](GITHUB_I_VERCEL.md) |
-| Naprawić konkretny błąd | [32 problemy i pierwsze kroki naprawy](PROBLEMY.md) |
+**Nie musisz czytać wszystkich plików z listy powyżej.** Poniżej masz jedną trasę. W każdym kroku otwierasz wskazaną instrukcję, robisz zadanie i sprawdzasz wynik.
 
-## Zacznij tutaj
+---
 
-1. **[Zainstaluj narzędzia i załóż konta](INSTALACJA_I_KONTA.md)** — instrukcja dla Windows i macOS.
-2. **[Sprawdź, jak pracujemy](START.md)** — materiały kursu i własna aplikacja to dwa osobne foldery.
-3. **[Otwórz lekcję 1](lekcja_01.md)** — działający chatbot pod linkiem, zabezpieczony hasłem.
+<a id="krok-1"></a>
+## 1. Otwierasz swoje miejsce pracy
 
-Wystarczy **Codex lub Claude Code**. Osobny edytor kodu nie jest potrzebny. Dostęp do modeli w budowanej aplikacji zapewnia LABA przez OpenRouter; dostęp do asystenta kodowania przygotuj osobno.
+Pierwsze zadanie jest małe: otworzyć terminal i sprawdzić, w jakim folderze jesteś.
 
-## Materiały dostajesz per lekcja
+**Otwórz:** [Terminal i pliki — punkty 1–2](TERMINAL_I_PLIKI.md#1-otwórz-terminal).
 
-Przed każdym spotkaniem pojawi się tutaj kolejna instrukcja i potrzebne przygotowanie. Po zajęciach dodamy pracę domową oraz ewentualne uzupełnienia. Opublikowane lekcje zostają dostępne.
+**Ten krok masz za sobą, gdy:** po wpisaniu polecenia widzisz ścieżkę folderu. Nie musi wyglądać identycznie jak w przykładzie — będzie w niej nazwa Twojego konta.
 
-Na teraz przygotuj środowisko i otwórz lekcję 1.
+**[Mam to → krok 2](#krok-2)**
 
-## Plan kursu
+<a id="krok-2"></a>
+## 2. Przygotowujesz narzędzia i folder
+
+Instalujesz Node.js z npm oraz Git. Potem tworzysz folder **moj-agent** — tutaj powstanie Twoja aplikacja.
+
+**Otwórz po kolei:**
+
+1. [Instalacja — punkt 3: Node.js i npm](INSTALACJA_I_KONTA.md#3-nodejs-i-npm).
+2. [Instalacja — punkt 4: Git](INSTALACJA_I_KONTA.md#4-git).
+3. [Terminal i pliki — punkt 3: folder aplikacji](TERMINAL_I_PLIKI.md#3-utwórz-folder-aplikacji).
+
+Na razie wykonaj tylko te części. Konta i pozostałe ustawienia pojawią się w kolejnych krokach.
+
+**Ten krok masz za sobą, gdy:** Node, npm i Git pokazują numery wersji, a Ty wiesz, gdzie jest folder moj-agent.
+
+Utknęło npm? [Rozwiązanie błędu PowerShell](PROBLEMY.md#p01). Program nie jest znajdowany? [Sprawdź instalację](PROBLEMY.md#p02).
+
+**[Mam to → krok 3](#krok-3)**
+
+<a id="krok-3"></a>
+## 3. Poznajesz swojego asystenta
+
+Uruchamiasz **Codex albo Claude Code**, wskazujesz folder moj-agent i zlecasz utworzenie pierwszego pliku.
+
+**Otwórz:** [Asystent od zera](ASYSTENT_OD_ZERA.md). Przejdź instalację i logowanie dla jednego wybranego narzędzia, a potem wykonaj test z punktu 4.
+
+**Ten krok masz za sobą, gdy:** w folderze widzisz plik **gotowosc.txt** z tekstem „Gotowe do LABA”. To pierwszy dowód, że AI potrafi pracować na Twoim komputerze.
+
+Asystent tylko pokazuje kod, a pliku nie ma? [Sprawdź tryb pracy](PROBLEMY.md#p06).
+
+**[Mam to → krok 4](#krok-4)**
+
+<a id="krok-4"></a>
+## 4. Twoja pierwsza strona zaczyna działać
+
+Teraz przechodzisz do ćwiczeń. Wklejasz pierwszy prompt do asystenta i otwierasz wynik w przeglądarce.
+
+**Otwórz:** [Lekcja 1 — krok 1: uruchom stronę](lekcja_01.md#1-uruchom-stronę).
+
+**Ten krok masz za sobą, gdy:** w przeglądarce widzisz „Mój chatbot”, pole wiadomości i przycisk. Czat jeszcze nie musi odpowiadać.
+
+Strona się nie otwiera? [Sprawdź serwer i adres](PROBLEMY.md#p09).
+
+**[Mam to → krok 5](#krok-5)**
+
+<a id="krok-5"></a>
+## 5. Chatbot odpowiada po raz pierwszy
+
+Podłączasz model AI kluczem otrzymanym od LABA. Asystent przygotowuje aplikację, a Ty wpisujesz klucz lokalnie.
+
+**Otwórz:** [Lekcja 1 — krok 2: podłącz model](lekcja_01.md#2-podłącz-model).
+
+Nie wiesz, gdzie wpisać klucz? [Tutaj pokazujemy plik, miejsce i format](KONFIGURACJA_I_HASLO.md).
+
+**Ten krok masz za sobą, gdy:** wysyłasz „Mam na imię Alex”, a po pytaniu „Jak mam na imię?” chatbot odpowiada na podstawie tej rozmowy.
+
+Dostęp do modelu w chatbocie zapewnia LABA przez OpenRouter. To oddzielny dostęp od konta Codex / Claude Code. Klucza nie wklejasz do rozmowy z asystentem.
+
+**[Mam to → krok 6](#krok-6)**
+
+<a id="krok-6"></a>
+## 6. Dodajesz hasło do swojego czatu
+
+Twój chatbot ma działać dla osób, którym podasz dostęp. Ustawiasz jedno hasło i sprawdzasz je w nowym prywatnym oknie przeglądarki.
+
+**Otwórz:** [Lekcja 1 — krok 3: dodaj hasło](lekcja_01.md#3-dodaj-hasło).
+
+**Ten krok masz za sobą, gdy:** błędne hasło blokuje dostęp, a poprawne pozwala rozmawiać z chatbotem. Po wyjściu hasło jest potrzebne ponownie.
+
+Hasło nie działa? [Sprawdź konfigurację i sesję](PROBLEMY.md#p16).
+
+**[Mam to → krok 7](#krok-7)**
+
+<a id="krok-7"></a>
+## 7. Zapisujesz projekt i wysyłasz go w świat
+
+Zakładasz konta GitHub i Vercel, jeśli jeszcze ich nie masz. Zapisujesz kod we własnym repozytorium, a potem uruchamiasz aplikację w internecie.
+
+**Otwórz:** [GitHub i Vercel — od konta do linku](GITHUB_I_VERCEL.md). Przejdź punkty 1–8. Przy zapisie kodu masz pod ręką [komendy Git z wyjaśnieniami](GIT_KROK_PO_KROKU.md).
+
+**Ten krok masz za sobą, gdy:** Vercel zakończył wdrożenie i masz adres swojej aplikacji. Za chwilę sprawdzisz, czy wszystko pod nim działa.
+
+Problem z wysłaniem kodu? [Pomoc Git](GIT_KROK_PO_KROKU.md#11-najczęstsze-komunikaty). Problem z wdrożeniem? [Build failed](PROBLEMY.md#p25).
+
+**[Mam to → ostatni krok](#krok-8)**
+
+<a id="krok-8"></a>
+## 8. Otwierasz własny link. Działa.
+
+Wyłącz lokalny serwer. Otwórz adres z Vercel w nowym prywatnym oknie.
+
+**Sprawdź trzy rzeczy:**
+
+- [ ] Najpierw pojawia się ekran hasła.
+- [ ] Błędne hasło nie wpuszcza, poprawne otwiera czat.
+- [ ] Po wysłaniu wiadomości dostajesz prawdziwą odpowiedź AI.
+
+**To jest efekt pierwszej lekcji: Twój działający chatbot za hasłem.**
+
+Zapisz link do aplikacji i własnego repo. Jeżeli coś jeszcze nie działa, zanotuj dokładny błąd — wrócimy do konkretnego miejsca, zamiast zaczynać wszystko od nowa.
+
+---
+
+## Utknąłeś? Pomoc jest częścią procesu
+
+[Znajdź swój komunikat w pomocy](PROBLEMY.md). Każdy problem ma opis pierwszej czynności i poprawnego wyniku.
+
+Jeżeli potrzebujesz wsparcia na czacie kursu, napisz: **numer kroku, system, co zrobiłeś i jaki komunikat widzisz**. Ukryj klucze i hasła.
+
+Nieznane słowo? [Otwórz słowniczek](SLOWNICZEK.md). Chcesz odnaleźć konkretną instrukcję? [Otwórz spis pomocy](POMOC.md).
+
+<details>
+<summary><strong>Co dalej? Zobacz trasę całego kursu</strong></summary>
+
+Przez 12 spotkań rozwijasz jedną aplikację. Każde kolejne spotkanie dodaje jej nową możliwość.
 
 | Lekcja | Co zbudujesz | Materiały |
 |---|---|---|
@@ -53,20 +158,20 @@ Na teraz przygotuj środowisko i otwórz lekcję 1.
 | 11 | Dopracowaną aplikację gotową do pokazania | Przed lekcją |
 | 12 | Prezentację projektu i poprawkę po feedbacku | Przed lekcją |
 
-## Coś nie działa?
+Nową instrukcję udostępniamy przed daną lekcją. Po zajęciach dodajemy pracę domową i uzupełnienia. Poprzednie materiały zostają dostępne.
 
-Pokaż błąd asystentowi:
+</details>
 
-> Wykonuję to ćwiczenie: [opis]. Po wpisaniu [komenda] dostaję [komunikat]. Wyjaśnij problem prostym językiem i pomóż go naprawić.
+<details>
+<summary><strong>Prace domowe i punkty</strong></summary>
 
-Jeżeli nadal stoisz w miejscu, wrzuć pytanie na czat kursu. Podaj system, krok i dokładny komunikat błędu. Ukryj hasła i klucze.
+- Prace domowe: **140 pkt**.
+- Projekt końcowy: **60 pkt**.
+- Łącznie: **200 pkt**.
+- Wyróżnienie: **od 160 pkt**.
 
-**PowerShell blokuje npm?** Wpisz `npm.cmd -v`. Więcej w [instrukcji instalacji](INSTALACJA_I_KONTA.md).
+Korzystanie z Codex / Claude Code jest częścią kursu. Ocenimy działający rezultat i sprawdzenie go według instrukcji.
 
-## Punktacja
+[Zadania i zasady oceniania](PRACE_DOMOWE.md)
 
-**200 punktów do zdobycia. Wyróżnienie od 160.**
-
-Prace domowe: 140 pkt. Projekt końcowy: 60 pkt. Korzystanie z AI jest częścią kursu. Ocenimy rezultat i sprawdzenie jego działania.
-
-[Zasady oceniania i opublikowane prace domowe](PRACE_DOMOWE.md)
+</details>
