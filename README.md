@@ -2,6 +2,13 @@
 
 **LABA AI Agents · edycja 2 · Paweł Paruzel**
 
+## Lekcja 2 — inżynieria promptów
+
+[Otwórz warsztaty i pracę domową](lekcja_02.md) · [Pobierz paczkę ZIP](https://github.com/SirIdontCare/laba-agenci-ai-s2/raw/refs/heads/main/LABA_Lekcja_02_Uczestnik_2026-11-05.zip)
+
+W paczce znajdziesz instrukcję do otwarcia w przeglądarce, prompty do kopiowania oraz dane testowe. Po rozpakowaniu otwórz **OTWORZ.html**.
+
+
 Zaczynasz od zera. Kończysz z własnym linkiem: wpisujesz hasło, wysyłasz wiadomość i AI odpowiada.
 
 Nie musisz wcześniej programować ani znać komend. Ta strona prowadzi Cię po kolei. Codex lub Claude Code pomoże pisać kod, a Ty będziesz sprawdzać efekty.
@@ -158,7 +165,7 @@ Przez 12 spotkań rozwijasz jedną aplikację. Każde kolejne spotkanie dodaje j
 | Lekcja | Co zbudujesz | Materiały |
 |---|---|---|
 | 1 | Działający chatbot pod linkiem, zabezpieczony hasłem | [Otwórz lekcję](lekcja_01.md) |
-| 2 | Instrukcje, które nadają agentowi rolę i zasady | Przed lekcją |
+| 2 | Instrukcje, które nadają agentowi rolę i zasady | [Otwórz lekcję](lekcja_02.md) |
 | 3 | Wyszukiwanie w internecie, grafiki i analiza zdjęć | Przed lekcją |
 | 4 | Agenta wykonującego zadanie w kilku krokach | Przed lekcją |
 | 5 | Pamięć rozmów i preferencji | Przed lekcją |

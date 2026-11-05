@@ -23,4 +23,6 @@ Nie przesyłaj kluczy API, haseł ani prawdziwych danych klientów.
 
 Praca domowa po lekcji 1: **zostanie dodana po zajęciach**.
 
+Praca domowa po lekcji 2: **[Instrukcje i format odpowiedzi — 10 pkt](lekcja_02.md#praca-domowa-2--10-punktów)**.
+
 [Powrót do kursu](README.md)
