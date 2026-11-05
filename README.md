@@ -9,6 +9,12 @@
 W paczce znajdziesz instrukcję do otwarcia w przeglądarce, prompty do kopiowania oraz dane testowe. Po rozpakowaniu otwórz **OTWORZ.html**.
 
 
+## Lekcja 1 — działający chatbot za hasłem
+
+[Otwórz warsztaty](lekcja_01.md) · [Pobierz paczkę ZIP](https://github.com/SirIdontCare/laba-agenci-ai-s2/raw/refs/heads/main/LABA_Lekcja_01_Uczestnik.zip)
+
+Paczka zawiera lekcję 1, instrukcje przygotowania komputera i kont oraz materiały pomocnicze. Po rozpakowaniu zacznij od **README.md**. Poniżej znajdziesz pełną trasę pierwszej lekcji — etapy 1–8.
+
 Zaczynasz od zera. Kończysz z własnym linkiem: wpisujesz hasło, wysyłasz wiadomość i AI odpowiada.
 
 Nie musisz wcześniej programować ani znać komend. Ta strona prowadzi Cię po kolei. Codex lub Claude Code pomoże pisać kod, a Ty będziesz sprawdzać efekty.
