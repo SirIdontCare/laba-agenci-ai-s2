@@ -2,6 +2,12 @@
 
 **LABA AI Agents · edycja 2 · Paweł Paruzel**
 
+## Lekcja 3 — narzędzia agenta
+
+[Otwórz warsztaty i pracę domową](lekcja_03.md)
+
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_03](starter_lekcja_03). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+
 ## Lekcja 2 — inżynieria promptów
 
 [Otwórz warsztaty i pracę domową](lekcja_02.md)
