@@ -255,6 +255,49 @@ Następnie poproś asystenta o sprawdzenie walidatora na czterech lokalnych przy
 
 Każdy przykład powinien zostać odrzucony. Sprawdź też odmowę modelu i przerwanie odpowiedzi przy użyciu kontrolowanej odpowiedzi testowej. Samo pole HTTP 200 nie oznacza, że analiza się udała.
 
+Poniższe polecenie wykonuje wszystkie te próby za Ciebie i zawiera potrzebne przykłady. Nie musisz pobierać żadnych plików.
+
+**Wklej do asystenta kodowania:**
+
+```text
+Sprawdź walidację analizy Studio Nova bez wywoływania modelu.
+Użyj tej samej funkcji walidacji, której używa endpoint analizy,
+a nie osobnej kopii schematu. Uruchom ją na pięciu przykładach:
+- poprawny wynik z lekcji (sales, normal, szkic o cenie 150 zł,
+  needs_review false): ma przejść,
+- brak pola draft: ma zostać odrzucony,
+- needs_review jako tekst "false": ma zostać odrzucony,
+- category o wartości marketing: ma zostać odrzucony,
+- dodatkowe pole send_now o wartości true: ma zostać odrzucony.
+Dla każdego przykładu podaj wynik i powód odrzucenia.
+Jeśli wynik z send_now przechodzi albo pole jest tylko po cichu
+usuwane, popraw schemat tak, aby dodatkowe pole było błędem.
+
+Następnie zamiast prawdziwego modelu użyj kontrolowanej odpowiedzi
+testowej (atrapy modelu) i zasymuluj:
+1. odmowę: model zwraca zwykły tekst zamiast JSON,
+2. przerwaną odpowiedź: ucięty JSON z powodem zakończenia "length".
+Dla obu przypadków pokaż status HTTP i komunikat, który zobaczę
+w aplikacji. Nie zamieniaj błędu na wynik z domyślnymi wartościami.
+
+Na koniec wypisz wszystkie zewnętrzne adresy, do których serwer
+wysyła żądania. Potwierdź, że aplikacja nie wysyła maili,
+nie obsługuje płatności i nie rezerwuje terminów.
+
+Zapisz testy w projekcie i podaj polecenie, którym uruchomię je
+ponownie. Użyj narzędzia testów, które projekt już ma. Jeśli go nie
+ma, zaproponuj najprostsze rozwiązanie i zapytaj przed instalacją.
+```
+
+**Jak ocenić wynik:**
+
+- **Walidacja.** Poprawny przykład przechodzi, a cztery błędne zostają odrzucone, każdy z własnym powodem. Jeśli odrzucony zostaje także poprawny wynik, walidator nie działa prawidłowo. Częsty błąd: walidator po cichu usuwa pole `send_now` i przepuszcza resztę wyniku. Biblioteka Zod robi tak domyślnie. Dodatkowe pole ma być błędem, a nie zostać pominięte.
+- **Odmowa i przerwana odpowiedź.** W aplikacji pojawia się zdanie po polsku, które mówi, co się stało i co zrobić dalej. Na przykład: „Model nie przygotował analizy. Sprawę trzeba obsłużyć ręcznie.” albo „Odpowiedź została przerwana. Spróbuj ponownie.” Błędem jest pusty ekran, napis `[object Object]`, techniczny opis błędu z kodu albo kategoria i szkic podstawione zamiast prawdziwego wyniku.
+- **Przerwana odpowiedź w przeglądarce (opcjonalnie).** Poproś asystenta o tymczasowe ustawienie bardzo małego limitu długości odpowiedzi, na przykład 20 tokenów. Wyślij pytanie o cenę i sprawdź komunikat. Potem poproś o przywrócenie poprzedniej wartości.
+- **Brak wysyłki.** W oknie aplikacji naciśnij F12, wybierz kartę Network (Sieć) i filtr Fetch/XHR. Uruchom analizę. Na liście powinny być tylko żądania do Twojej aplikacji. Zapytania do OpenRouter wykonuje serwer, więc nie zobaczysz ich na tej liście. Przycisk kopiowania szkicu jest w porządku. Nie powinno być przycisku, który wysyła szkic do klienta.
+
+Te próby są częścią ćwiczenia W2. Praca domowa ich nie wymaga i nie wpływają na punkty.
+
 ### Sprawdź W2
 
 - [ ] Prawidłowy wynik ma wszystkie cztery pola.
@@ -329,7 +372,7 @@ Ile trwa i ile kosztuje konsultacja online?
 
 ## Dodatkowe wiadomości do przećwiczenia
 
-Możesz wykorzystać poniższe wiadomości do utrwalenia W1–W3. Nie są dodatkową pracą domową ani osobnymi kryteriami oceny. Każdą analizuj osobno, bez historii poprzedniego przykładu.
+Możesz wykorzystać poniższe wiadomości do utrwalenia W1–W3. Nie są osobnym zadaniem ani osobnymi kryteriami oceny, ale możesz ich użyć jako scenariuszy testowych w pracy domowej. Każdą analizuj osobno, bez historii poprzedniego przykładu.
 
 1. Ile kosztuje konsultacja online i jak długo trwa?
 2. Spotkanie zaczyna się za 30 minut. Mam je opłacone, ale link nie działa.
@@ -350,10 +393,27 @@ Sprawdź kategorię, priorytet, fakty w szkicu i brak nieuprawnionych obietnic. 
 
 ## Praca domowa 2 — 10 punktów
 
-Instrukcje i format odpowiedzi
-Dodaj personę, zasady, przykłady few-shot i odpowiedź JSON sprawdzaną względem schematu. Przeprowadź próbę prompt injection i popraw instrukcje.
+**Instrukcje i format odpowiedzi**
 
-Do oddania: link do kodu lub commita, wynik testu (opis, zrzut lub nagranie) i krótki opis zmian.
+Zrób to w swoim chatbocie:
 
-Kryteria oceny (10 pkt):
-Persona, zasady i przykłady — 3 pkt; JSON z walidacją i obsługą błędu — 3 pkt; udokumentowany test ataku i poprawka — 3 pkt; opis zmian — 1 pkt.
+1. Zapisz instrukcję systemową z rolą (personą), zasadami i co najmniej dwoma przykładami odpowiedzi (few-shot).
+2. Dodaj odpowiedź w formacie JSON, którą serwer sprawdza względem schematu. Gdy wynik nie pasuje do schematu, aplikacja pokazuje czytelny komunikat.
+3. Sprawdź chatbota na 5 scenariuszach testowych. Mogą być własne albo z listy „Dodatkowe wiadomości do przećwiczenia” powyżej. Jednym z nich może być próba prompt injection z W3. Dla każdego zapisz, co wysłałeś i co odpowiedział chatbot. Jeśli któraś odpowiedź była zła, popraw instrukcję i powtórz ten scenariusz.
+
+**Do oddania:**
+
+- link do kodu albo zrzuty ekranu instrukcji i wyniku JSON,
+- wyniki 5 scenariuszy (opis, zrzuty ekranu lub nagranie),
+- 2–3 zdania o tym, co zmieniłeś.
+
+**Kryteria oceny (10 pkt):**
+
+| Kryterium | Punkty |
+|---|---|
+| Persona, zasady i przykłady | 3 |
+| JSON z walidacją i obsługą błędu | 3 |
+| 5 scenariuszy testowych z wynikami i poprawką instrukcji | 3 |
+| Opis zmian | 1 |
+
+Jeśli masz już oddaną pracę z próbą prompt injection i poprawką, jest zaliczona według tych samych punktów. Nie musisz nic dosyłać.
