@@ -4,16 +4,16 @@
 
 ## Lekcja 2 — inżynieria promptów
 
-[Otwórz warsztaty i pracę domową](lekcja_02.md) · [Pobierz paczkę ZIP](https://github.com/SirIdontCare/laba-agenci-ai-s2/raw/refs/heads/main/LABA_Lekcja_02_Uczestnik_2026-11-05.zip)
+[Otwórz warsztaty i pracę domową](lekcja_02.md)
 
-W paczce znajdziesz instrukcję do otwarcia w przeglądarce, prompty do kopiowania oraz dane testowe. Po rozpakowaniu otwórz **OTWORZ.html**.
+Wszystkie prompty, przykłady i dane testowe są w treści lekcji. Otwierasz ją na tej stronie, bez pobierania plików.
 
 
 ## Lekcja 1 — działający chatbot za hasłem
 
-[Otwórz warsztaty](lekcja_01.md) · [Pobierz paczkę ZIP](https://github.com/SirIdontCare/laba-agenci-ai-s2/raw/refs/heads/main/LABA_Lekcja_01_Uczestnik.zip)
+[Otwórz warsztaty](lekcja_01.md)
 
-Paczka zawiera lekcję 1, instrukcje przygotowania komputera i kont oraz materiały pomocnicze. Po rozpakowaniu zacznij od **README.md**. Poniżej znajdziesz pełną trasę pierwszej lekcji — etapy 1–8.
+Poniżej znajdziesz pełną trasę pierwszej lekcji — etapy 1–8.
 
 Zaczynasz od zera. Kończysz z własnym linkiem: wpisujesz hasło, wysyłasz wiadomość i AI odpowiada.
 
