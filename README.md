@@ -2,11 +2,17 @@
 
 **LABA AI Agents · edycja 2 · Paweł Paruzel**
 
+## Lekcja 4 — pętla ReAct
+
+[Otwórz warsztaty i pracę domową](lekcja_04.md)
+
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_04](starter_lekcja_04). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+
 ## Lekcja 3 — narzędzia agenta
 
 [Otwórz warsztaty i pracę domową](lekcja_03.md)
 
-Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_03](starter_lekcja_03). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_03](starter_lekcja_03).
 
 ## Lekcja 2 — inżynieria promptów
 
