@@ -62,6 +62,53 @@ ma już teraz i w którym pliku są zdefiniowane.
 
 ---
 
+## Warsztat 0 — Nowy wygląd aplikacji (w tle, podczas wstępu)
+
+**Po co:** agent, który dobrze wygląda, chętniej pokazujesz innym. Asystent zrobi to sam — Ty w tym czasie słuchasz wstępu.
+
+**Gotowe, gdy:** aplikacja wygląda inaczej niż na początku zajęć i wszystko działa jak wcześniej.
+
+### 🟢 Minimum — odświeżenie jednym promptem
+
+Wklej prompt i zostaw asystenta przy pracy. Wrócisz do niego przed warsztatem 1.
+
+```text
+Odśwież wygląd tej aplikacji. Zmieniasz tylko wygląd — żadna funkcja nie może zniknąć
+ani zmienić działania (czat, logowanie hasłem, narzędzia, etykiety, źródła, zdjęcia, obrazy, analiza JSON).
+
+- Nowoczesny, czysty układ: czat wyśrodkowany, szerokość wygodna do czytania, więcej oddechu.
+- Dymki rozmowy: moje wiadomości po prawej, odpowiedzi agenta po lewej, zaokrąglone rogi.
+- Jeden kolor przewodni pasujący do tematu mojego chatbota, użyty konsekwentnie w przyciskach i linkach.
+- Nagłówek z nazwą chatbota i krótkim opisem.
+- Pole wiadomości przyklejone na dole, przyciski równe i czytelne, wyraźny stan „agent pisze…”.
+- Etykiety narzędzi i lista źródeł jako małe, estetyczne plakietki.
+- Ekran logowania w tym samym stylu.
+- Dobrze wygląda na telefonie i na dużym ekranie; tekst ma dobry kontrast.
+
+Nie dodawaj nowych bibliotek. Na końcu uruchom build i napisz, które pliki zmieniłeś.
+```
+
+**Sprawdź:** odśwież stronę, zaloguj się i napisz „Cześć”. Wygląda lepiej i odpowiada? **Minimum zrobione.**
+
+### 🔵 Standard — tryb ciemny
+
+```text
+Dodaj tryb jasny i ciemny: domyślnie zgodny z ustawieniem systemu, z przełącznikiem w nagłówku.
+Wybór zapamiętaj w przeglądarce. Sprawdź kontrast tekstu w obu trybach.
+```
+
+### 🟣 Dla szybkich — Twój styl
+
+```text
+Zaprojektuj wygląd pod mój temat: [opisz klimat, np. „ciepła kawiarnia”, „techniczny i surowy”,
+„spokojny gabinet”]. Zaproponuj dwie palety kolorów i krój pisma, pokaż mi je krótko opisane,
+a po moim wyborze zastosuj w całej aplikacji.
+```
+
+Coś się zepsuło po zmianie wyglądu? Napisz: „Cofnij zmiany wyglądu i wróć do działającej wersji”.
+
+---
+
 ## Warsztat 1 — Osiem narzędzi (40 min)
 
 **Po co:** im więcej agent potrafi sprawdzić sam, tym mniej zgaduje. Osiem prostych narzędzi to zestaw, z którego da się złożyć prawdziwe zadanie.
