@@ -74,32 +74,70 @@ Do lekcji 7 Twoja aplikacja ma jedno wspólne hasło, więc ma jednego „właś
 
 **Gotowe, gdy:** projekt i tabela są utworzone w Dashboardzie.
 
+Cztery słowa, które dziś padną:
+
+| Słowo | Co to jest | W zeszycie |
+|---|---|---|
+| **Projekt** | Twoja własna baza danych w Supabase, z własnym adresem i kluczami | cały zeszyt |
+| **Tabela** | lista rzeczy jednego rodzaju, np. rozmów | jedna strona z rubrykami |
+| **Kolumna** | jedna cecha każdej pozycji, np. tytuł | rubryka |
+| **Wiersz** | jedna zapisana pozycja, np. jedna rozmowa | jedna linijka |
+
+**Relacja** to powiązanie dwóch tabel: każda wiadomość „wie”, do której rozmowy należy. Zrobisz ją na poziomie Standard.
+
+Panel Supabase jest po angielsku i co jakiś czas zmienia wygląd. Jeśli przycisk nazywa się u Ciebie trochę inaczej niż tutaj, szukaj najbliższego odpowiednika albo zapytaj asystenta (prompt na końcu poziomu Minimum).
+
 ### 🟢 Minimum — projekt i pierwsza tabela
 
-Klikasz razem z prowadzącym:
+Klikasz razem z prowadzącym.
 
-1. Wejdź na https://supabase.com/dashboard i kliknij **New project**.
-2. Wpisz nazwę projektu, np. `agent-kurs`.
-3. Przy haśle do bazy (**Database Password**) kliknij generowanie hasła i zapisz je w bezpiecznym miejscu. Dziś nie będzie potrzebne.
-4. Wybierz region w Europie. Pozostałe ustawienia zostaw domyślne.
-5. Kliknij **Create new project** i poczekaj 1–2 minuty, aż projekt się uruchomi.
-6. W menu po lewej otwórz **Table Editor** i kliknij **New table**.
-7. W polu **Name** wpisz `conversations`. Opcję Row Level Security (RLS) zostaw **włączoną** — dzięki niej tabela nie jest publiczna.
-8. Kolumny `id` i `created_at` są już na liście — zostaw je. Kliknij **Add column** i dodaj kolumnę `title` typu `text`.
-9. Kliknij **Save**.
+**Część A — załóż projekt (czyli bazę)**
 
-Teraz połącz projekt z aplikacją. Potrzebujesz dwóch wartości:
+1. Wejdź na https://supabase.com/dashboard i zaloguj się (najszybciej kontem GitHub).
+2. Pierwsze logowanie? Supabase poprosi najpierw o utworzenie **organizacji** — to tylko „teczka” na projekty. Wpisz dowolną nazwę i wybierz plan **Free**.
+3. Kliknij **New project**.
+4. Wypełnij formularz:
 
-10. Kliknij **Connect** u góry strony i skopiuj adres projektu (**Project URL**).
-11. Otwórz **Settings → API Keys** i skopiuj klucz **secret** (zaczyna się od `sb_secret_`).
-12. Otwórz plik `.env.local` w swoim projekcie, dopisz dwie linie, zapisz plik i uruchom serwer ponownie:
+   | Pole | Co wpisać |
+   |---|---|
+   | nazwa projektu (**Project name**) | `agent-kurs` |
+   | hasło do bazy (**Database Password**) | kliknij generowanie hasła i zapisz je w bezpiecznym miejscu. Dziś nie będzie potrzebne. |
+   | **Region** | dowolny w Europie, np. Frankfurt |
+   | pozostałe opcje | zostaw domyślne, niczego nie wyłączaj |
+
+5. Kliknij **Create new project** i poczekaj 1–2 minuty. Projekt jest gotowy, gdy zamiast komunikatu o przygotowywaniu widzisz stronę główną projektu z menu po lewej.
+
+**Część B — utwórz tabelę `conversations` (lista rozmów)**
+
+6. W menu po lewej otwórz **Table Editor** (ikona tabeli) i kliknij **New table**. Z prawej strony wysunie się panel.
+7. W polu **Name** wpisz `conversations` — małymi literami, bez spacji i polskich znaków.
+8. Opcja **Enable Row Level Security (RLS)** jest zaznaczona — **zostaw ją zaznaczoną**. Dzięki niej tabela nie jest publiczna: nikt z internetu jej nie przeczyta.
+9. Niżej, w części **Columns**, są już dwie kolumny. Nie zmieniaj ich:
+
+   | Kolumna | Typ | Do czego służy |
+   |---|---|---|
+   | `id` | `int8` | numer rozmowy; baza nadaje go sama: 1, 2, 3… |
+   | `created_at` | `timestamptz` | data i godzina utworzenia; baza wpisuje ją sama |
+
+10. Kliknij **Add column**. W nowym wierszu wpisz nazwę `title`, a w polu typu wybierz z listy `text`. To będzie tytuł rozmowy.
+11. Kliknij **Save** na dole panelu. Po chwili tabela `conversations` pojawi się na liście po lewej.
+
+**Część C — połącz projekt z aplikacją**
+
+Potrzebujesz dwóch wartości: adresu projektu i klucza.
+
+12. Kliknij **Connect** u góry strony. Skopiuj adres projektu (**Project URL**) — wygląda tak: `https://abcdefgh.supabase.co`.
+13. W menu po lewej otwórz **Settings** (ikona koła zębatego) → **API Keys**. Znajdź klucz **secret** — zaczyna się od `sb_secret_`. Jeśli na liście nie ma jeszcze żadnego, utwórz go na tej stronie. Skopiuj klucz ikoną kopiowania.
+14. Otwórz plik `.env.local` w swoim projekcie (obok `package.json`) i dopisz na końcu dwie linie — bez spacji i bez cudzysłowów:
 
 ```dotenv
 SUPABASE_URL=tu_wklej_adres_projektu
 SUPABASE_SECRET_KEY=tu_wklej_klucz_secret
 ```
 
-Klucz secret jest jak klucz do całego zeszytu. Zostaje tylko w `.env.local`.
+15. Zapisz plik. W terminalu zatrzymaj serwer (Ctrl+C) i uruchom go ponownie (`npm run dev`) — nowe zmienne wczytują się dopiero przy starcie.
+
+Klucz secret jest jak klucz do całego zeszytu. Zostaje tylko w `.env.local`. Na tej samej stronie jest też klucz **publishable** — dziś go nie używamy.
 
 Zgubiłeś się w panelu? Wklej asystentowi:
 
@@ -110,16 +148,59 @@ podawaj jedno kliknięcie naraz i czekaj, aż napiszę „zrobione”. Nie zast�
 Nie proś mnie o wklejanie kluczy — mają trafić tylko do .env.local.
 ```
 
-**Sprawdź:** w **Table Editor** widzisz tabelę `conversations` z kolumnami `id`, `created_at`, `title`. **Minimum zrobione.**
+**Sprawdź:** w **Table Editor** widzisz tabelę `conversations` z kolumnami `id`, `created_at`, `title`, a w `.env.local` są dwie nowe linie. **Minimum zrobione.**
 
 ### 🔵 Standard — pozostałe dwie tabele i relacja
 
-Dodaj w Table Editor jeszcze dwie tabele. W obu zostaw `id`, `created_at` i włączony RLS.
+Dodasz dwie tabele: `messages` (wiadomości) i `user_profiles` (to, co agent wie o Tobie). W obu zostaw `id`, `created_at` i zaznaczony RLS — tak jak przy `conversations`.
 
-| Tabela | Kolumny do dodania |
-|---|---|
-| `messages` | `conversation_id` (typ `int8`, relacja do `conversations.id`, przy usunięciu rozmowy: **Cascade**), `role` (`text`), `content` (`text`) |
-| `user_profiles` | `name` (`text`), `preferences` (`jsonb`) |
+**Część A — tabela `messages` i relacja do `conversations`**
+
+Jedna rozmowa ma wiele wiadomości. Dlatego każda wiadomość dostaje rubrykę `conversation_id` z numerem swojej rozmowy. Relacja pilnuje dwóch rzeczy: nie da się zapisać wiadomości do rozmowy, której nie ma, a usunięcie rozmowy usuwa też jej wiadomości.
+
+1. **Table Editor → New table**, w polu **Name** wpisz `messages`.
+2. Kliknij **Add column** trzy razy i dodaj:
+
+   | Nazwa | Typ | Do czego służy |
+   |---|---|---|
+   | `conversation_id` | `int8` | numer rozmowy, do której należy wiadomość. Typ musi być **taki sam** jak typ `id` w `conversations`. |
+   | `role` | `text` | kto to napisał: `user` albo `assistant` |
+   | `content` | `text` | treść wiadomości |
+
+3. Teraz relacja. W tym samym panelu zjedź niżej do części **Foreign keys** i kliknij **Add foreign key relation**. (W niektórych wersjach panelu to ikona łańcucha obok kolumny `conversation_id`.)
+4. W okienku relacji ustaw:
+
+   | Pole | Co wybrać |
+   |---|---|
+   | schemat | `public` |
+   | tabela, do której prowadzi relacja | `conversations` |
+   | kolumna z tabeli `messages` (po lewej) | `conversation_id` |
+   | kolumna z tabeli `conversations` (po prawej) | `id` |
+   | co zrobić, gdy rozmowa zostanie usunięta (**Action if referenced row is removed**) | **Cascade** — usunięcie rozmowy usuwa jej wiadomości |
+   | co zrobić przy zmianie (**Action if referenced row is updated**) | zostaw domyślne |
+
+5. Zatwierdź okienko relacji (**Save**), a potem całą tabelę (**Save** na dole panelu).
+
+**Część B — tabela `user_profiles`**
+
+6. **New table**, **Name**: `user_profiles`. Dodaj dwie kolumny:
+
+   | Nazwa | Typ | Do czego służy |
+   |---|---|---|
+   | `name` | `text` | Twoje imię |
+   | `preferences` | `jsonb` | „szuflada” na dowolne fakty, np. miasto i ulubione jedzenie — bez dodawania nowej kolumny na każdy z nich |
+
+7. Kliknij **Save**. Ta tabela nie ma relacji.
+
+**Część C — sprawdź, że relacja działa**
+
+8. W menu po lewej otwórz **Database → Schema Visualizer**. Widzisz trzy tabele i linię łączącą `messages.conversation_id` z `conversations.id`.
+9. Wróć do **Table Editor**, otwórz `conversations`, kliknij **Insert → Insert row**, wpisz w `title` słowo `test` i zapisz. Zapamiętaj numer `id` nowego wiersza (pewnie 1).
+10. Otwórz `messages`, kliknij **Insert → Insert row**. W `conversation_id` wpisz ten numer, w `role` wpisz `user`, w `content` — `próba`. Zapisz.
+11. Spróbuj dodać drugi wiersz z `conversation_id` równym `999`. Baza odmówi — takiej rozmowy nie ma. Tak ma być.
+12. Wróć do `conversations`, zaznacz wiersz `test` i usuń go. Zajrzyj do `messages` — wiadomość `próba` też zniknęła. To jest właśnie **Cascade**.
+
+Gdyby coś szło inaczej niż w krokach, wklej asystentowi:
 
 ```text
 Jestem w Supabase Dashboard, w Table Editor. Mam już tabelę conversations (id, created_at, title).
@@ -131,7 +212,40 @@ Podawaj jedno kliknięcie naraz i czekaj na moje „zrobione”. Nie zastępuj k
 Na końcu powiedz mi, gdzie w panelu sprawdzę, że RLS jest włączony we wszystkich trzech tabelach.
 ```
 
-**Sprawdź:** w Table Editor są trzy tabele. Kolumna `conversation_id` w tabeli `messages` jest powiązana z tabelą `conversations`. RLS jest włączony w każdej z nich.
+**Sprawdź:** w Table Editor są trzy tabele, Schema Visualizer pokazuje linię między `messages` i `conversations`, a test z kroków 9–12 zadziałał. RLS jest włączony w każdej tabeli.
+
+**Klikanie nie wyszło i kończy się czas?** Nie blokuj się. Otwórz **SQL Editor** w menu po lewej, wklej poniższy skrypt i kliknij **Run**. Tworzy brakujące tabele z relacją; istniejących nie rusza.
+
+```sql
+create table if not exists public.conversations (
+  id bigint generated by default as identity primary key,
+  created_at timestamptz not null default now(),
+  title text
+);
+
+create table if not exists public.messages (
+  id bigint generated by default as identity primary key,
+  created_at timestamptz not null default now(),
+  conversation_id bigint not null references public.conversations (id) on delete cascade,
+  role text,
+  content text
+);
+
+create table if not exists public.user_profiles (
+  id bigint generated by default as identity primary key,
+  created_at timestamptz not null default now(),
+  name text,
+  preferences jsonb
+);
+
+alter table public.conversations enable row level security;
+alter table public.messages enable row level security;
+alter table public.user_profiles enable row level security;
+
+grant all on table public.conversations to service_role;
+grant all on table public.messages to service_role;
+grant all on table public.user_profiles to service_role;
+```
 
 ### 🟣 Dla szybkich — pola z Twojego tematu
 
@@ -308,7 +422,9 @@ Sprawdź opis narzędzia zapiszProfil i instrukcję agenta, popraw i powiedz, ja
 |---|---|
 | Projekt w Supabase długo się tworzy | To normalne przez 1–2 minuty. Po 5 minutach odśwież stronę panelu. |
 | Błąd o braku `SUPABASE_URL` albo `SUPABASE_SECRET_KEY` | Sprawdź nazwy w `.env.local` (bez spacji i cudzysłowów), zapisz plik i uruchom serwer ponownie. |
-| Błąd „permission denied” albo „row-level security” | Skopiuj cały komunikat do asystenta i dopisz: „Aplikacja ma łączyć się z bazą tylko z serwera, kluczem secret. Nie wyłączaj RLS. Jeśli brakuje uprawnień, daj mi SQL do wklejenia w SQL Editor”. |
+| Błąd „permission denied for table …” | Klucz secret nie ma uprawnień do tabeli. Otwórz **SQL Editor**, wklej trzy ostatnie linie (`grant all …`) ze skryptu z warsztatu 1 i kliknij **Run**. RLS zostaje włączony. |
+| Błąd o „row-level security” | Skopiuj cały komunikat do asystenta i dopisz: „Aplikacja ma łączyć się z bazą tylko z serwera, kluczem secret. Nie wyłączaj RLS”. |
+| Nie da się utworzyć relacji | Sprawdź, czy `conversation_id` ma typ `int8` — taki sam jak `id` w `conversations`. Inny typ blokuje relację. |
 | Po F5 rozmowa znika | Zajrzyj do tabeli `messages`. Pusta — problem z zapisem. Są wiersze — problem z odczytem. Napisz to asystentowi. |
 | Wiadomości zapisują się podwójnie | Napisz: „Każda wiadomość ma być zapisana raz. Znajdź, gdzie zapis wykonuje się dwa razy”. |
 | Agent „zapomniał”, choć w bazie jest wiersz | Problem jest w odczycie, nie w modelu. Napisz: „Sprawdź, czy profil jest wczytywany z bazy i dołączany do instrukcji przy każdej odpowiedzi”. |
