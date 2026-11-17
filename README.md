@@ -2,11 +2,17 @@
 
 **LABA AI Agents · edycja 2 · Paweł Paruzel**
 
+## Lekcja 5 — pamięć agenta
+
+[Otwórz warsztaty i pracę domową](lekcja_05.md)
+
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_05](starter_lekcja_05). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+
 ## Lekcja 4 — pętla ReAct
 
 [Otwórz warsztaty i pracę domową](lekcja_04.md)
 
-Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_04](starter_lekcja_04). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_04](starter_lekcja_04).
 
 ## Lekcja 3 — narzędzia agenta
 
