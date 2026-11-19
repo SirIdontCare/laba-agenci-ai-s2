@@ -216,7 +216,24 @@ Sprawdź, czy baza wiedzy jest dobrze przygotowana:
 
 **Sprawdź:** asystent podaje nazwę modelu, liczbę i pięć pierwszych wartości (małe ułamki, dodatnie i ujemne). Liczba jest taka sama jak w tabeli `chunks` (domyślnie 1536). Obie tabele mają włączony RLS.
 
-### 🟣 Dla szybkich — zaplanuj bazę wiedzy swojego agenta
+### 🟣 Dla szybkich — zmierz znaczenie na liczbach
+
+Zanim uruchomisz prompt, zgadnij: które zdanie jest „bliżej” pytania A — zdanie B czy C? I jak duża będzie różnica?
+
+```text
+Pokaż mi na liczbach, że embedding łapie znaczenie. Jednorazowym skryptem, który potem usuniesz,
+policz embeddingi trzech zdań modelem z OPENROUTER_EMBEDDING_MODEL:
+A: „Ile zapłacę za najtańszy plan?”
+B: „Pakiet Start kosztuje 490 zł netto miesięcznie.”
+C: „Agent rozmawia po polsku i po angielsku.”
+Policz podobieństwo kosinusowe par A–B i A–C. Sprawdź w dokumentacji AI SDK w node_modules,
+czy jest do tego gotowa funkcja, zanim napiszesz własną. Podaj oba wyniki i jedno zdanie wniosku.
+Nie wypisuj wartości z .env.local.
+```
+
+**Sprawdź:** masz dwie liczby. A–B jest wyraźnie wyższe niż A–C, chociaż zdania A i B nie mają wspólnych słów. Potem podmień zdanie C na własne i poszukaj pary, która oszuka model: zdania o różnym znaczeniu, ale z wysokim wynikiem. Wrzuć ją na czat kursu.
+
+Zostało kilka minut? Zaplanuj bazę wiedzy swojego agenta — przyda się w warsztacie 3 i w pracy domowej:
 
 ```text
 Mój agent to [temat]. Pomóż mi zaplanować jego bazę wiedzy:
@@ -225,8 +242,6 @@ Mój agent to [temat]. Pomóż mi zaplanować jego bazę wiedzy:
 - dopisz dwa pytania-pułapki, na które NIE powinien odpowiadać, bo tego nie będzie w dokumentach.
 Niczego nie zmieniaj w kodzie. Zapisz plan w pliku baza-wiedzy-plan.md.
 ```
-
-**Sprawdź:** masz plik z listą dokumentów i pytań. Przyda się w warsztacie 3 i w pracy domowej.
 
 ---
 
@@ -245,6 +260,14 @@ Co się stanie po kliknięciu „Dodaj do bazy wiedzy”:
 | 3 | prosi model embeddingów o listę liczb dla każdego fragmentu | kolumna `embedding` wypełniona liczbami |
 
 ### 🟢 Minimum — strona /upload
+
+1. Wklej poniższy prompt do asystenta — w tej samej rozmowie, w której wkleiłeś prompt z kroku 0.
+2. Asystent może pytać o zgodę na zmianę plików albo uruchomienie polecenia — zgadzaj się. O klucze i hasła nie powinien pytać; gdyby zapytał, niczego nie wklejaj.
+3. Poczekaj. Asystent pisze kilka plików i uruchamia build, więc zwykle trwa to kilka minut. W tym czasie zrób zadanie „Gdy asystent pracuje” spod promptu.
+4. Asystent skończył, gdy napisze w 3 punktach, co zrobił. Jeśli zamiast tego widzisz błąd — napisz: „Napraw ten błąd”.
+5. Odśwież stronę w przeglądarce (F5). Serwer nie działa? Uruchom go ponownie: `npm run dev`.
+
+Gotowy wynik: pod adresem `/upload` jest formularz z polami „Tytuł” i „Treść” oraz przyciskiem „Dodaj do bazy wiedzy”, a w czacie pojawił się link „Baza wiedzy”.
 
 ```text
 Dodaj stronę /upload do wklejania dokumentów do bazy wiedzy.
@@ -337,6 +360,16 @@ liczbami i nazwami. Zapisz je w plikach cennik.txt, faq.txt i regulamin.txt.
 
 **Sprawdź:** na liście w `/upload` są trzy dokumenty. To już pierwsza część pracy domowej.
 
+**Wyzwanie: jak ciąć tekst?** Dzielenie po akapitach to tylko jedna z możliwości. Sprawdź drugą na swoim regulaminie i sam zdecyduj, która jest lepsza.
+
+```text
+Dodaj na stronie /upload wybór sposobu dzielenia tekstu: „akapity” (jak teraz) albo
+„stałe kawałki” — po 300 znaków z zakładką 50 znaków. Domyślnie zostają akapity.
+Niczego więcej nie zmieniaj.
+```
+
+Dodaj swój regulamin drugi raz, sposobem „stałe kawałki”, pod tytułem `Regulamin (kawałki)`. Otwórz tabelę `chunks` i porównaj oba warianty: ile jest fragmentów i czy pojedynczy fragment da się zrozumieć bez sąsiednich. W warsztacie 3 zadaj pytanie o regulamin i zobacz, który wariant trafia do źródeł. Gorszy wariant usuń przed pracą domową.
+
 ---
 
 ## Warsztat 3 — searchKnowledge, cytaty i brak danych (20 min)
@@ -355,6 +388,14 @@ Co się stanie, gdy zadasz pytanie:
 | 4 | agent odpowiada tylko z tych fragmentów i dopisuje źródło — albo mówi, że odpowiedzi w nich nie ma |
 
 ### 🟢 Minimum — agent odpowiada z dokumentów
+
+1. Wklej poniższy prompt do asystenta — w tej samej rozmowie, w której wkleiłeś prompt z kroku 0.
+2. Asystent może pytać o zgodę na zmianę plików albo uruchomienie polecenia — zgadzaj się. O klucze i hasła nie powinien pytać; gdyby zapytał, niczego nie wklejaj.
+3. Poczekaj. Asystent pisze kilka plików i uruchamia build, więc zwykle trwa to kilka minut. W tym czasie zrób zadanie „Gdy asystent pracuje” spod promptu.
+4. Asystent skończył, gdy napisze w 3 punktach, co zrobił. Jeśli zamiast tego widzisz błąd — napisz: „Napraw ten błąd”.
+5. Odśwież stronę w przeglądarce (F5). Serwer nie działa? Uruchom go ponownie: `npm run dev`.
+
+Gotowy wynik: czat wygląda tak samo jak przedtem. Nowe narzędzie widać dopiero w odpowiedziach — po linii „📎 Źródło: …”.
 
 ```text
 Dodaj agentowi narzędzie searchKnowledge — wyszukiwanie w bazie wiedzy.
