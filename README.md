@@ -2,11 +2,17 @@
 
 **LABA AI Agents · edycja 2 · Paweł Paruzel**
 
+## Lekcja 6 — baza wiedzy (RAG)
+
+[Otwórz warsztaty i pracę domową](lekcja_06.md)
+
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_06](starter_lekcja_06). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+
 ## Lekcja 5 — pamięć agenta
 
 [Otwórz warsztaty i pracę domową](lekcja_05.md)
 
-Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_05](starter_lekcja_05). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_05](starter_lekcja_05).
 
 ## Lekcja 4 — pętla ReAct
 
