@@ -19,9 +19,20 @@ Każdy warsztat ma trzy poziomy. **Poziom wybierasz sam i możesz go zmieniać m
 Zasady:
 
 - Zrobione minimum = warsztat zaliczony. Nikt nie zostaje w tyle, jeśli ma minimum.
-- Każdy poziom to **jeden prompt** — kopiujesz go do asystenta (Codex albo Claude Code) i czekasz na wynik.
-- Coś nie działa dłużej niż 3 minuty? Skopiuj treść błędu do asystenta i napisz: „Napraw ten błąd”. Jeśli dalej nie działa — podnieś rękę.
+- Prompty są gotowe — kopiujesz je do asystenta (Codex albo Claude Code) i czekasz na wynik. Poziom Minimum w warsztacie 2 ma dwa krótkie prompty, żeby po każdym dało się sprawdzić wynik.
+- Coś nie działa dłużej niż 3 minuty? Znajdź błąd (tabela niżej), skopiuj go do asystenta i napisz: „Napraw ten błąd”. Jeśli dalej nie działa — podnieś rękę.
 - Kluczy i haseł **nigdy** nie wklejasz do czatu z asystentem ani do kodu. Trafiają tylko do pliku `.env.local` i do ustawień Vercel.
+
+**Gdzie szukać błędu**
+
+| Gdzie | Jak wygląda | Co skopiować |
+|---|---|---|
+| na stronie aplikacji | czerwony komunikat w formularzu albo w czacie | cały komunikat |
+| w terminalu, w którym działa `npm run dev` | czerwone linie, często ze słowem `Error` | ostatnie 10–20 linii |
+| w oknie asystenta | asystent sam pisze, że build się nie udał | nic — napisz tylko „Napraw to i uruchom build ponownie” |
+| w Supabase, SQL Editor | komunikat pod polem z kodem | cały komunikat |
+
+Zaznacz tekst myszą, skopiuj (Ctrl+C) i wklej do asystenta razem ze zdaniem: „Napraw ten błąd”. Jeśli w skopiowanym tekście widzisz coś, co wygląda jak klucz (`sb_secret_…`, `sk-or-…`) — usuń ten kawałek przed wklejeniem.
 
 ## Słowa, które dziś padną
 
@@ -259,39 +270,42 @@ Co się stanie po kliknięciu „Dodaj do bazy wiedzy”:
 | 2 | dzieli treść na fragmenty po akapitach | kilka wierszy w tabeli `chunks` |
 | 3 | prosi model embeddingów o listę liczb dla każdego fragmentu | kolumna `embedding` wypełniona liczbami |
 
-### 🟢 Minimum — strona /upload
+### 🟢 Minimum — strona /upload w dwóch krokach
 
-1. Wklej poniższy prompt do asystenta — w tej samej rozmowie, w której wkleiłeś prompt z kroku 0.
+Robisz to dwoma krótkimi promptami. Po pierwszym tekst trafia do bazy, po drugim dochodzą embeddingi. Dzięki temu od razu widać, co działa, a co nie.
+
+Przy **każdym** prompcie postępuj tak samo:
+
+1. Wklej prompt do asystenta — w tej samej rozmowie, w której wkleiłeś prompt z kroku 0.
 2. Asystent może pytać o zgodę na zmianę plików albo uruchomienie polecenia — zgadzaj się. O klucze i hasła nie powinien pytać; gdyby zapytał, niczego nie wklejaj.
-3. Poczekaj. Asystent pisze kilka plików i uruchamia build, więc zwykle trwa to kilka minut. W tym czasie zrób zadanie „Gdy asystent pracuje” spod promptu.
-4. Asystent skończył, gdy napisze w 3 punktach, co zrobił. Jeśli zamiast tego widzisz błąd — napisz: „Napraw ten błąd”.
+3. Poczekaj — zwykle kilka minut. W tym czasie zrób zadanie „Gdy asystent pracuje”.
+4. Asystent skończył, gdy napisze w 3 punktach, co zrobił. Widzisz błąd? Napisz: „Napraw ten błąd”.
 5. Odśwież stronę w przeglądarce (F5). Serwer nie działa? Uruchom go ponownie: `npm run dev`.
 
-Gotowy wynik: pod adresem `/upload` jest formularz z polami „Tytuł” i „Treść” oraz przyciskiem „Dodaj do bazy wiedzy”, a w czacie pojawił się link „Baza wiedzy”.
+**Krok A — strona, która zapisuje tekst**
 
 ```text
-Dodaj stronę /upload do wklejania dokumentów do bazy wiedzy.
+Dodaj stronę /upload do wklejania dokumentów do bazy wiedzy. Na razie BEZ embeddingów.
 
 - Formularz: pole „Tytuł” i duże pole „Treść” (do 20 000 znaków) oraz przycisk „Dodaj do bazy wiedzy”.
-- Endpoint najpierw sprawdza sesję. Potem: zapisuje dokument w tabeli documents, dzieli treść
+- Endpoint najpierw sprawdza sesję. Potem zapisuje dokument w tabeli documents i dzieli treść
   na fragmenty: jeden akapit (tekst oddzielony pustą linią) to jeden fragment. Nie łącz krótkich
-  akapitów. Akapit dłuższy niż 800 znaków podziel na granicy zdania. Potem tworzy
-  embeddingi wszystkich fragmentów jednym wywołaniem (embedMany, model z OPENROUTER_EMBEDDING_MODEL)
-  i zapisuje je w tabeli chunks: document_id, chunk_index, content, embedding.
+  akapitów. Akapit dłuższy niż 800 znaków podziel na granicy zdania.
+- Fragmenty zapisuje w tabeli chunks: document_id, chunk_index, content. Kolumna embedding
+  zostaje na razie pusta.
 - Pusty tytuł albo pusta treść — komunikat od razu w formularzu.
 - Po zapisie pokaż: „Zapisano dokument „[tytuł]”: [liczba] fragmentów”.
-- Jeśli embeddingi albo zapis się nie udadzą, usuń niedokończony dokument i pokaż zrozumiały
-  komunikat po polsku. Nie pokazuj „Zapisano”, gdy czegoś brakuje.
+- Jeśli zapis się nie uda, usuń niedokończony dokument i pokaż zrozumiały komunikat po polsku.
 - W czacie dodaj link „Baza wiedzy” prowadzący do /upload.
 ```
 
 **Gdy asystent pracuje:** policz akapity w cenniku poniżej i wpisz na czat kursu, ile wierszy pojawi się w tabeli `chunks` po jego dodaniu.
 
-**Sprawdź — dodaj dwa dokumenty:**
+**Sprawdź krok A:**
 
-1. Wejdź na http://localhost:3000/upload.
+1. W czacie aplikacji kliknij link „Baza wiedzy” albo wejdź na http://localhost:3000/upload. Widzisz formularz z polami „Tytuł” i „Treść”.
 2. W polu „Tytuł” wpisz `Cennik 2026`.
-3. W polu „Treść” wklej:
+3. Skopiuj poniższy tekst w całości — razem z pustymi liniami między akapitami — i wklej w pole „Treść”:
 
 ```text
 Kwantowy Borsuk buduje agentów AI dla małych firm z Polski. Oferujemy trzy pakiety: Start, Zespół i Firma. Wszystkie ceny w tym cenniku są cenami netto i obowiązują od 1 stycznia 2026 roku.
@@ -305,8 +319,30 @@ Cena pakietu Firma jest ustalana indywidualnie po rozmowie z doradcą. Pakiet ob
 Umowę można wypowiedzieć z miesięcznym okresem wypowiedzenia. Płatność odbywa się przelewem na podstawie faktury, w terminie 14 dni. Przy płatności za cały rok z góry udzielamy 10% rabatu.
 ```
 
-4. Kliknij „Dodaj do bazy wiedzy”. Widzisz komunikat z liczbą fragmentów. Zgadza się z Twoim typem?
-5. Dodaj drugi dokument. Tytuł: `FAQ`. Treść:
+4. Kliknij „Dodaj do bazy wiedzy”. Pod formularzem pojawia się komunikat: „Zapisano dokument „Cennik 2026”: 5 fragmentów”. Zgadza się z Twoim typem?
+5. Otwórz Supabase → **Table Editor** → kliknij tabelę `chunks` na liście po lewej. Widzisz 5 wierszy. W kolumnie `content` są akapity cennika, a kolumna `embedding` jest pusta (`NULL`). Tak ma być — embeddingi dojdą w kroku B.
+
+Masz 1 albo 2 wiersze zamiast 5? Napisz asystentowi: „Każdy akapit ma być osobnym fragmentem. Popraw dzielenie”. Potem w Table Editor otwórz tabelę `documents`, zaznacz wiersz kwadracikiem po lewej, kliknij **Delete** i dodaj cennik ponownie.
+
+**Krok B — embeddingi**
+
+```text
+Dodaj embeddingi do importu na /upload.
+
+- Po podzieleniu tekstu utwórz embeddingi wszystkich fragmentów jednym wywołaniem
+  (embedMany, model z OPENROUTER_EMBEDDING_MODEL) i zapisz je w kolumnie embedding tabeli chunks.
+- Przy każdym imporcie uzupełnij też embeddingi fragmentów, które już są w bazie
+  i mają pustą kolumnę embedding.
+- Jeśli embeddingi się nie udadzą, usuń niedokończony dokument i pokaż zrozumiały komunikat
+  po polsku. Nie pokazuj „Zapisano”, gdy czegoś brakuje.
+```
+
+**Gdy asystent pracuje:** przeczytaj dokument FAQ poniżej i wymyśl jedno pytanie, na które odpowiada — ale ułożone tak, żeby nie użyć żadnego słowa z tekstu. Przyda się w warsztacie 3.
+
+**Sprawdź krok B:**
+
+6. Wróć na http://localhost:3000/upload i odśwież stronę (F5).
+7. Dodaj drugi dokument. W polu „Tytuł” wpisz `FAQ`, a w pole „Treść” wklej w całości:
 
 ```text
 Jak długo trwa wdrożenie? Od podpisania umowy do pierwszej rozmowy agenta z klientem mija zwykle 5 dni roboczych. W pakiecie Firma termin ustalamy indywidualnie.
@@ -320,15 +356,17 @@ Czy jest okres próbny? Tak. Pakiet Start można testować bezpłatnie przez 14 
 Gdzie są przechowywane dane rozmów? Dane są przechowywane na serwerach w Unii Europejskiej i usuwane po 90 dniach od zakończenia umowy.
 ```
 
+8. Kliknij „Dodaj do bazy wiedzy”. Komunikat: „Zapisano dokument „FAQ”: 5 fragmentów”. Tym razem trwa to chwilę dłużej — aplikacja pyta model embeddingów.
+
 **Zajrzyj do środka** — to najciekawszy moment tego warsztatu:
 
-6. Otwórz Supabase → **Table Editor** → `documents`. Są dwa wiersze: `Cennik 2026` i `FAQ`.
-7. Otwórz `chunks`. Jest dziesięć wierszy — po jednym na akapit. W kolumnie `content` widzisz kawałki tekstu, a w `document_id` numer dokumentu, z którego pochodzą — to relacja, jak w lekcji 5.
-8. Kliknij komórkę w kolumnie `embedding`. Ta ściana liczb to „znaczenie” jednego akapitu zapisane tak, żeby baza mogła je porównywać.
+9. Otwórz Supabase → **Table Editor** → `documents`. Są dwa wiersze: `Cennik 2026` i `FAQ`. Dane się nie odświeżyły? Kliknij **Refresh** nad tabelą.
+10. Otwórz `chunks`. Jest dziesięć wierszy — po jednym na akapit. W kolumnie `document_id` jest numer dokumentu, z którego pochodzi fragment — to relacja, jak w lekcji 5.
+11. Przewiń tabelę w prawo do kolumny `embedding` i kliknij dowolną komórkę. Ta ściana liczb to „znaczenie” jednego akapitu zapisane tak, żeby baza mogła je porównywać.
 
-Kolumna `embedding` jest wypełniona we wszystkich wierszach? **Minimum zrobione.**
+Kolumna `embedding` jest wypełniona we wszystkich dziesięciu wierszach — także w pięciu z cennika? **Minimum zrobione.**
 
-Masz jeden albo dwa wiersze zamiast dziesięciu? Napisz asystentowi: „Każdy akapit ma być osobnym fragmentem. Popraw dzielenie”, usuń dokumenty w Table Editor (tabela `documents`) i dodaj je ponownie.
+Kolumna `embedding` jest pusta albo import kończy się błędem? Skopiuj komunikat ze strony i ostatnie linie z terminala do asystenta. Jeśli błąd mówi o modelu albo dostępie — zgłoś prowadzącemu, to sprawa klucza, a nie Twojego kodu.
 
 ### 🔵 Standard — postęp, błędy, lista dokumentów
 
@@ -416,7 +454,7 @@ Dodaj agentowi narzędzie searchKnowledge — wyszukiwanie w bazie wiedzy.
 
 **Gdy asystent pracuje:** wpisz na czat kursu swój typ. Na pytanie o numer telefonu do sprzedaży (nie ma go w dokumentach) agent: **A** — odmówi, **B** — zmyśli numer, **C** — poszuka w internecie.
 
-**Sprawdź trzema pytaniami.** Każde zadaj w nowej rozmowie.
+**Sprawdź trzema pytaniami.** Wróć do czatu aplikacji (http://localhost:3000) i odśwież stronę (F5). Przed każdym pytaniem kliknij „Nowa rozmowa”, żeby poprzednia odpowiedź nie podpowiadała agentowi.
 
 **Pytanie 1 — „po”.** To samo pytanie co na początku zajęć:
 
