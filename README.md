@@ -6,11 +6,13 @@
 
 [Otwórz warsztaty i pracę domową](lekcja_07.md)
 
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_07](starter_lekcja_07). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+
 ## Lekcja 6 — baza wiedzy (RAG)
 
 [Otwórz warsztaty i pracę domową](lekcja_06.md)
 
-Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_06](starter_lekcja_06). Przed każdymi zajęciami pojawi się tu aktualny projekt, od którego można zacząć.
+Twój projekt z poprzednich zajęć nie działa? Weź gotowy projekt do kontynuacji: [starter_lekcja_06](starter_lekcja_06).
 
 ## Lekcja 5 — pamięć agenta
 
