@@ -2,6 +2,10 @@
 
 **LABA AI Agents · edycja 2 · Paweł Paruzel**
 
+## Lekcja 7 — logowanie i prywatne dane
+
+[Otwórz warsztaty i pracę domową](lekcja_07.md)
+
 ## Lekcja 6 — baza wiedzy (RAG)
 
 [Otwórz warsztaty i pracę domową](lekcja_06.md)
