@@ -392,7 +392,7 @@ To najdłuższe klikanie w kursie. Idź krok po kroku razem z prowadzącym i nie
 4. Wejdź na https://console.cloud.google.com i zaloguj się kontem Google. Przy pierwszym wejściu zaakceptuj warunki usługi.
 5. U góry strony kliknij nazwę projektu (obok logo Google Cloud). W okienku kliknij **New project**, wpisz nazwę `agent-kurs` i kliknij **Create**. Poczekaj kilkanaście sekund, potem wybierz ten projekt z tej samej listy.
 6. W polu wyszukiwania u góry wpisz `Google Auth Platform` i otwórz tę stronę.
-7. Jeśli widzisz przycisk **Get started**, kliknij go i wypełnij krótki formularz:
+7. Jeśli widzisz przycisk **Get started**, kliknij go i wypełnij krótki formularz. Ma cztery części — po każdej klikasz **Next**:
 
    | Pole | Co wpisać |
    |---|---|
@@ -401,7 +401,7 @@ To najdłuższe klikanie w kursie. Idź krok po kroku razem z prowadzącym i nie
    | odbiorcy (**Audience**) | **External** |
    | dane kontaktowe (**Contact information**) | Twój adres Gmail |
 
-   Zaznacz zgodę na zasady i kliknij **Create**.
+   W ostatniej części (**Finish**) zaznacz zgodę na zasady (**I agree to the Google API Services: User Data Policy**), kliknij **Continue**, a potem **Create**.
 8. W menu po lewej otwórz **Audience**. W części **Test users** kliknij **Add users**, wpisz swój adres Gmail i zapisz. Aplikacja jest w trybie testowym: przez Google zalogują się tylko osoby z tej listy. Na dziś wystarczy Twój adres.
 9. W menu po lewej otwórz **Data Access**. Kliknij **Add or remove scopes** i zaznacz trzy pozycje: `openid`, `…/auth/userinfo.email` i `…/auth/userinfo.profile`. Niczego więcej nie zaznaczaj. Zatwierdź (**Update**) i zapisz (**Save**).
 
