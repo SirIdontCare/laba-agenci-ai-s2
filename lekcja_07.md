@@ -119,6 +119,8 @@ Panele Supabase i Google są po angielsku i co jakiś czas zmieniają wygląd. J
    Dlaczego: z włączonym potwierdzaniem Supabase wysyła do nowej osoby e-mail z linkiem. Darmowa poczta Supabase wysyła tylko 2 wiadomości na godzinę i tylko na adresy osób z Twojego zespołu w Supabase. Koledzy z kursu nie mogliby założyć u Ciebie konta. Wyłączenie potwierdzania to uproszczenie na czas kursu.
 4. W bocznej liście wybierz **URL Configuration**. W polu **Site URL** wpisz `http://localhost:3000`. W części **Redirect URLs** kliknij **Add URL**, wpisz `http://localhost:3000/**` (z dwiema gwiazdkami) i zapisz.
 
+   **Masz już aplikację na Vercel?** Kliknij **Add URL** jeszcze raz i dodaj drugi wpis: `https://twoj-adres.vercel.app/**` — swój adres z Vercel, też z dwiema gwiazdkami. Oba wpisy działają obok siebie: logowanie zadziała i na Twoim komputerze, i online. **Site URL** na dziś zostaje `http://localhost:3000`.
+
 **Część B — adres projektu i klucz dla przeglądarki**
 
 5. W menu po lewej otwórz **Settings** (ikona koła zębatego) → **API Keys**. Znajdź klucz **publishable** — zaczyna się od `sb_publishable_`. Skopiuj go ikoną kopiowania.
@@ -132,6 +134,8 @@ Panele Supabase i Google są po angielsku i co jakiś czas zmieniają wygląd. J
    ```
 
 7. Zapisz plik. W terminalu zatrzymaj serwer (Ctrl+C) i uruchom go ponownie — nowe zmienne wczytują się dopiero przy starcie. Linii `SUPABASE_URL` i `SUPABASE_SECRET_KEY` nie usuwaj.
+
+   **Żeby to samo działało na Vercel:** plik `.env.local` zostaje na Twoim komputerze, Vercel go nie widzi. W projekcie na Vercel otwórz **Settings → Environment Variables**, dodaj te same dwie zmienne z tymi samymi wartościami, kliknij **Save** i opublikuj aplikację ponownie. Możesz to zrobić po zajęciach — na dziś wystarczy localhost.
 
 **Część C — prompt**
 
@@ -410,7 +414,9 @@ To najdłuższe klikanie w kursie. Idź krok po kroku razem z prowadzącym i nie
 10. W menu po lewej otwórz **Clients** i kliknij **Create client**.
 11. W polu **Application type** wybierz **Web application**. Nazwę zostaw domyślną.
 12. W części **Authorized JavaScript origins** kliknij **Add URI** i wpisz `http://localhost:3000`.
-13. W części **Authorized redirect URIs** kliknij **Add URI** i wklej adres z kroku 3 (ten z Supabase, zakończony na `/auth/v1/callback`).
+
+    **Masz już aplikację na Vercel?** Kliknij **Add URI** jeszcze raz i dodaj drugi adres: `https://twoj-adres.vercel.app` — bez ukośnika na końcu i bez gwiazdek. Google przyjmuje tu kilka adresów naraz.
+13. W części **Authorized redirect URIs** kliknij **Add URI** i wklej adres z kroku 3 (ten z Supabase, zakończony na `/auth/v1/callback`). Ten adres jest jeden — taki sam dla localhosta i dla Vercel, więc tu niczego nie dodajesz.
 14. Kliknij **Create**. Pojawi się okienko z dwiema wartościami: **Client ID** i **Client secret**. **Nie zamykaj go** — sekret jest pokazywany tylko raz.
 
 **Część D — z powrotem w karcie Supabase**
